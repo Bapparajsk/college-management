@@ -1,3 +1,5 @@
+import { Atom, Beaker, BookOpen, BowArrow, Calculator, FlaskConical, LibraryBig, LucideIcon, MessageSquareText, Unplug } from "lucide-react-native";
+
 export type RoutingDetails = {
     subject: string;
     classType?: "Lecture" | "Drawing" | "Lab" | "Workshop"| "game";
@@ -5,12 +7,12 @@ export type RoutingDetails = {
     room?: string;
     teacher?: { sortForm: string; fullName: string };
     topics?: string;
-    icon: React.ReactNode;
-    color: `#${string}`;
+    icon: LucideIcon;
+    classTypeIcon: LucideIcon;
+    color?: string;
 }
 
 export type Day = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
-
 
 
 export const routingDetails: Record<Day, RoutingDetails[]> = {
@@ -21,17 +23,27 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 10.5, end: 11.5 },
             room: "A-3",
             teacher: { sortForm: "S.P", fullName: "Sujit Pathak" },
+            icon: Atom,
+            classTypeIcon: BookOpen,
+            color: "#4F46E5",
         },
+        
         {
             subject: "C.SKILLS in English",
             classType: "Lecture",
             time: { start: 11.5, end: 12.5 },
             room: "A-3",
             teacher: { sortForm: "P.T", fullName: "Priyank Tiwari" },
+            icon: MessageSquareText,
+            classTypeIcon: BookOpen,
+            color: "#C400F7",
         },
         {
             subject: "Library",
             time: { start: 12.5, end: 13.5 },
+            icon: LibraryBig,
+            classTypeIcon: BookOpen,
+            color: "#4F46E5",
         }, 
         {
             subject: "Mathematics - 1",
@@ -39,6 +51,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 14, end: 15 },
             room: "A-3",
             teacher: { sortForm: "S.D", fullName: "Subrata Das" },
+            icon: Calculator,
+            classTypeIcon: BookOpen,
+            color: "#4561F9",
         },
         {
             subject: "Applied Chemistry",
@@ -46,6 +61,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 15, end: 16 },
             room: "A-3",
             teacher: { sortForm: "R.D", fullName: "Rajdeep Das" },
+            icon: FlaskConical,
+            classTypeIcon: BookOpen,
+            color: "#4561F9",
         },
         {
             subject: "C.SKILLS in English",
@@ -53,6 +71,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 16, end: 17 },
             room: "A-3",
             teacher: { sortForm: "P.T", fullName: "Priyank Tiwari" },
+            classTypeIcon: BookOpen,
+            icon: MessageSquareText,
+            color: "#C400F7",
         },
     ],
     "Tuesday": [
@@ -62,6 +83,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 10.5, end: 11.5 },
             room: "A-3",
             teacher: { sortForm: "P.T", fullName: "Priyank Tiwari" },
+            icon: MessageSquareText,
+            classTypeIcon: BookOpen,
+            color: "#C400F7",
         },
         {
             subject: "Mathematics - 1",
@@ -69,12 +93,18 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 11.5, end: 12.5 },
             room: "A-3",
             teacher: { sortForm: "S.D", fullName: "Subrata Das" },
+            icon: Calculator,
+            classTypeIcon: BookOpen,
+            color: "#4561F9",
         },
         {
             subject: "Applied Chemistry",
-            classType: "Drawing",
+            classType: "Lecture",
             time: { start: 14, end: 17 },
             teacher: { sortForm: "S.L", fullName: "Saifuddin Laskar" },
+            icon: FlaskConical,
+            classTypeIcon: BookOpen,
+            color: "#4561F9",
         },
     ],
     "Wednesday": [
@@ -83,6 +113,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             classType: "Lab",
             time: { start: 10.5, end: 12.5 },
             teacher: { sortForm: "S.P/R.D", fullName: "Sujit Pathak / Rajdeep Das" },
+            icon: Atom,
+            classTypeIcon: Beaker,
+            color: "#4F46E5",
         },
         {
             subject: "Applied Physics - 1",
@@ -90,6 +123,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 12.5, end: 13.5 },
             room: "A-3",
             teacher: { sortForm: "S.P", fullName: "Sujit Pathak" },
+            icon: Atom,
+            classTypeIcon: BookOpen,
+            color: "#4F46E5",
         },
         {
             subject: "Mathematics - 1",
@@ -97,6 +133,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 14, end: 15 },
             room: "A-3",
             teacher: { sortForm: "S.D", fullName: "Subrata Das" },
+            icon: Calculator,
+            classTypeIcon: BookOpen,
+            color: "#4561F9",
         },
         {
             subject: "C.SKILLS in English",
@@ -104,6 +143,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 15, end: 16 },
             room: "A-3",
             teacher: { sortForm: "P.T", fullName: "Priyank Tiwari" },
+            icon: MessageSquareText,
+            classTypeIcon: BookOpen,
+            color: "#C400F7",
         },
         {
             subject: "Applied Chemistry",
@@ -111,6 +153,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 16, end: 17 },
             room: "A-3",
             teacher: { sortForm: "R.D", fullName: "Rajdeep Das" },
+            icon: FlaskConical,
+            classTypeIcon: BookOpen,
+            color: "#4561F9",
         },
     ],
     "Thursday": [
@@ -120,6 +165,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 10.5, end: 12.5 },
             room: "-",
             teacher: { sortForm: "P.T", fullName: "Priyank Tiwari" },
+            icon: MessageSquareText,
+            classTypeIcon: Beaker,
+            color: "#C400F7",
         },
         {
             subject: "Applied Chemistry",
@@ -127,6 +175,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 12.5, end: 13.5 },
             room: "A-3",
             teacher: { sortForm: "R.D", fullName: "Rajdeep Das" },
+            icon: FlaskConical,
+            classTypeIcon: BookOpen,
+            color: "#4561F9",
         }, 
         {
             subject: "Mathematics - 1",
@@ -134,6 +185,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 14, end: 15 },
             room: "A-3",
             teacher: { sortForm: "S.D", fullName: "Subrata Das" },
+            icon: Calculator,
+            classTypeIcon: BookOpen,
+            color: "#4561F9",
         },
         {
             subject: "Applied Physics - 1",
@@ -141,6 +195,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 15, end: 16 },
             room: "A-3",
             teacher: { sortForm: "S.P", fullName: "Sujit Pathak" },
+            icon: Atom,
+            classTypeIcon: BookOpen,
+            color: "#4F46E5",
         },
         {
             subject: "Sports & Yoga",
@@ -148,6 +205,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 16, end: 17 },
             room: "A-3",
             teacher: { sortForm: "P.T", fullName: "Priyank Tiwari" },
+            icon: BowArrow,
+            classTypeIcon: BowArrow,
+            color: "#4F46E5",
         },
     ],
     "Friday": [
@@ -157,6 +217,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 10.5, end: 13.5 },
             room: "A-3",
             teacher: { sortForm: "M.M+S.R+R.P", fullName: "M.M+S.R+R.P" }, // moumita mallick, sumeswar ram, ranjit panday
+            icon: Unplug,
+            classTypeIcon: Unplug,
+            color: "#4F46E5",
         },
         {
             subject: "Applied Phy-1/Chem (B-2/1)",
@@ -164,6 +227,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 14, end: 16 },
             room: "-",
             teacher: { sortForm: "S.P/R.D", fullName: "Sujit Pathak / Rajdeep Das" },
+            icon: Atom,
+            classTypeIcon: BookOpen,
+            color: "#4F46E5",
         },
         {
             subject: "Applied Physics - 1",
@@ -171,6 +237,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             time: { start: 16, end: 17 },
             room: "A-3",
             teacher: { sortForm: "S.P", fullName: "Sujit Pathak" },
+            icon: Atom,
+            classTypeIcon: BookOpen,
+            color: "#4F46E5",
         },
     ]
 } as Record<Day, RoutingDetails[]>;
@@ -187,3 +256,4 @@ export const getTodaysRoutine = () => {
 
     return routingDetails[dayName] || [];
 }
+
