@@ -1,15 +1,15 @@
 import { RoutingCard, RoutingDetails } from '@/components/routine'
+import AbsoluteButton from '@/components/ui/absolute-button'
 import Header from '@/components/ui/header'
 import { FlashList } from '@shopify/flash-list'
-import { CalendarDays } from 'lucide-react-native'
+import { CalendarCog, CalendarDays } from 'lucide-react-native'
 import { useMemo } from 'react'
 import { View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function Routine() {
 
-    const toDayRoutine = useMemo(() => RoutingDetails.getTodaysRoutine, [])
-    // 
+    const toDayRoutine = useMemo(() => RoutingDetails.getTodaysRoutine, []);
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -17,7 +17,7 @@ export default function Routine() {
                 icon={<CalendarDays />}
                 title={"Today's Class"}
             />
-
+            <AbsoluteButton icon={<CalendarCog color={"#ffffff"} />} className='bg-[#0D1017]'/>
             <View className="flex-1">
                 <FlashList
                     data={toDayRoutine()}

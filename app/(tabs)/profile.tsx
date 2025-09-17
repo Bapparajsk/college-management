@@ -1,17 +1,15 @@
-import { Text, View } from "react-native";
+import Header from "@/components/ui/header";
+import { User } from "lucide-react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Index() {
+export default function Profile() {
     return (
-        <View
+        <SafeAreaView
             style={{
                 flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
             }}
         >
-            <Text className="text-3xl text-pink-300">
-                profile
-            </Text>
-        </View>
+            <Header icon={<User size={29} />} title="Profile" />
+        </SafeAreaView>
     );
 }

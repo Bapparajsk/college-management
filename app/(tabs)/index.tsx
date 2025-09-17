@@ -1,14 +1,14 @@
 import { PostCard } from "@/components/home";
-import { Link } from "expo-router";
-import { MessageSquarePlus, School } from "lucide-react-native";
-import { Pressable, RefreshControl } from "react-native";
-import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
-import { FlashList } from "@shopify/flash-list";
-import { useCallback, useState } from "react";
+import AbsoluteButton from "@/components/ui/absolute-button";
 import Header from "@/components/ui/header";
+import { FlashList } from "@shopify/flash-list";
+import { MessageSquarePlus, School } from "lucide-react-native";
+import { useCallback, useState } from "react";
+import { RefreshControl } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
-    const insets = useSafeAreaInsets();
+    
 
     const [data, setData] = useState(Array.from({ length: 5 }, (_, i) => `Item ${i + 1}`));
     const [refreshing, setRefreshing] = useState(false);
@@ -27,12 +27,7 @@ export default function Index() {
     return (
         <SafeAreaView style={{ flex: 1 }} >
             <Header icon={<School size={24} />} title="EIEM" />
-            <Pressable style={{ bottom: insets.bottom + 90 }}
-                className="absolute right-5 z-10 size-16 rounded-2xl bg-[#0D1017] flex items-center justify-center">
-                <Link href="/new-post" asChild push>
-                    <MessageSquarePlus color={"#FFFFFF"} />
-                </Link>
-            </Pressable>
+            <AbsoluteButton icon={<MessageSquarePlus color={"#ffffff"} />} />
             <FlashList
                 contentContainerStyle={{ paddingBottom: 100 }}
                 data={data}
