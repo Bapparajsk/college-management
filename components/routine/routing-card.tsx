@@ -29,10 +29,9 @@ const RoutingCard = ({ subject, classType, time, room, teacher, topics, classTyp
     }));
 
     const contentStyle = useAnimatedStyle(() => ({
-        height: expanded.value ? withTiming(72, { duration: 200 }) : withTiming(0, { duration: 200 }),
-        // opacity: withTiming(expanded.value ? 1 : 0, { duration: 200 }),
-        paddingVertical: expanded.value ? withTiming(8, { duration: 200 }) : withTiming(0, { duration: 200 }),
-        borderColor: expanded.value ? "#bdbdc2" : "transparent"
+        height: expanded.value ? withTiming(72, { duration: 100 }) : withTiming(0, { duration: 100 }),
+        paddingVertical: expanded.value ? withTiming(8, { duration: 100 }) : withTiming(0, { duration: 100 }),
+        borderColor: expanded.value ? withTiming("#E5E7EB", { duration: 100 }) : withTiming("transparent", { duration: 100 }),
     }));
 
     // 🔹 Track countdown only when expanded + not Completed
@@ -65,23 +64,23 @@ const RoutingCard = ({ subject, classType, time, room, teacher, topics, classTyp
 
     return (
         <Animated.View
-            layout={LinearTransition.duration(150).easing(Easing.linear)} // linear expand/collapse
-            entering={FadeInDown.duration(150).easing(Easing.linear)}
-            exiting={FadeOutUp.duration(150).easing(Easing.linear)}
+            layout={LinearTransition.duration(100).easing(Easing.linear)} // linear expand/collapse
+            entering={FadeInDown.duration(100).easing(Easing.linear)}
+            exiting={FadeOutUp.duration(100).easing(Easing.linear)}
 
             style={[{ borderWidth: 1, borderColor: "#E5E7EB", backgroundColor: "#FFFFFF", borderRadius: 12, overflow: "hidden", }]}
         >
             <Pressable onPress={toggleExpand}>
                 <View className="w-full h-20 flex flex-row items-center justify-between px-3">
                     <View className="flex flex-row items-center gap-2">
-                        <View style={{ backgroundColor: color + "40" }} className="size-14 rounded-full border border-default flex items-center justify-center">
+                        <View style={{ backgroundColor: color + "30", borderColor: color + "60" }} className={("size-14 rounded-full border-2 flex items-center justify-center")}>
                             <SubjectIcon color={color} />
                         </View>
                         <View>
                             <Text className="text-lg font-poppins-semibold max-w-[270px]" numberOfLines={1}>
                                 {subject}
                                 <Text className="text-base font-poppins-regular text-gray-700">
-                                    {" "} {teacher?.sortForm && `(${teacher.sortForm}) - `} {room && `(${room})`}
+                                    {" "} {teacher?.sortForm && `(${teacher.sortForm})`} {room && `- (${room})`}
                                 </Text>
                             </Text>
                             <Text className="text-base font-poppins text-gray-600">
@@ -95,7 +94,7 @@ const RoutingCard = ({ subject, classType, time, room, teacher, topics, classTyp
                         </Animated.View>
                     </View>
                 </View>
-                {(<Animated.View className="px-3 border-t border-transparent h-0" style={[contentStyle, { overflow: "hidden" }]}>  
+                <Animated.View className="px-3 border-t border-transparent h-0" style={[contentStyle, { overflow: "hidden" }]}>  
                     <View className="flex-row justify-between items-center mb-1">
                         <Text className="text-sm font-poppins text-gray-600">
                             {status === "Upcoming" && "Starts in:"}
@@ -142,7 +141,7 @@ const RoutingCard = ({ subject, classType, time, room, teacher, topics, classTyp
                             <Text className="ml-1 text-xs font-poppins text-gray-600">{topics || <Text className="text-gray-400">No topics assigned</Text>}</Text>
                         </View>
                     </View>
-                </Animated.View>)}
+                </Animated.View>
             </Pressable>
         </Animated.View>
     )

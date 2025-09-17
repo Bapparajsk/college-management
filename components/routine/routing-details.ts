@@ -12,6 +12,7 @@ export type RoutingDetails = {
     color?: string;
 }
 
+
 export type Day = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
 
 
@@ -25,7 +26,7 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             teacher: { sortForm: "S.P", fullName: "Sujit Pathak" },
             icon: Atom,
             classTypeIcon: BookOpen,
-            color: "#4F46E5",
+            color: "#F1BA00",
         },
         
         {
@@ -63,7 +64,7 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             teacher: { sortForm: "R.D", fullName: "Rajdeep Das" },
             icon: FlaskConical,
             classTypeIcon: BookOpen,
-            color: "#4561F9",
+            color: "#00D866",
         },
         {
             subject: "C.SKILLS in English",
@@ -104,7 +105,7 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             teacher: { sortForm: "S.L", fullName: "Saifuddin Laskar" },
             icon: FlaskConical,
             classTypeIcon: BookOpen,
-            color: "#4561F9",
+            color: "#00D866",
         },
     ],
     "Wednesday": [
@@ -115,7 +116,7 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             teacher: { sortForm: "S.P/R.D", fullName: "Sujit Pathak / Rajdeep Das" },
             icon: Atom,
             classTypeIcon: Beaker,
-            color: "#4F46E5",
+            color: "#00D866",
         },
         {
             subject: "Applied Physics - 1",
@@ -125,7 +126,7 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             teacher: { sortForm: "S.P", fullName: "Sujit Pathak" },
             icon: Atom,
             classTypeIcon: BookOpen,
-            color: "#4F46E5",
+            color: "#F1BA00",
         },
         {
             subject: "Mathematics - 1",
@@ -155,7 +156,7 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             teacher: { sortForm: "R.D", fullName: "Rajdeep Das" },
             icon: FlaskConical,
             classTypeIcon: BookOpen,
-            color: "#4561F9",
+            color: "#00D866",
         },
     ],
     "Thursday": [
@@ -163,7 +164,6 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             subject: "C.SKILLS in English",
             classType: "Lab",
             time: { start: 10.5, end: 12.5 },
-            room: "-",
             teacher: { sortForm: "P.T", fullName: "Priyank Tiwari" },
             icon: MessageSquareText,
             classTypeIcon: Beaker,
@@ -177,7 +177,7 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             teacher: { sortForm: "R.D", fullName: "Rajdeep Das" },
             icon: FlaskConical,
             classTypeIcon: BookOpen,
-            color: "#4561F9",
+            color: "#00D866",
         }, 
         {
             subject: "Mathematics - 1",
@@ -197,7 +197,7 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             teacher: { sortForm: "S.P", fullName: "Sujit Pathak" },
             icon: Atom,
             classTypeIcon: BookOpen,
-            color: "#4F46E5",
+            color: "#F1BA00",
         },
         {
             subject: "Sports & Yoga",
@@ -229,7 +229,7 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             teacher: { sortForm: "S.P/R.D", fullName: "Sujit Pathak / Rajdeep Das" },
             icon: Atom,
             classTypeIcon: BookOpen,
-            color: "#4F46E5",
+            color: "#00D866",
         },
         {
             subject: "Applied Physics - 1",
@@ -239,7 +239,7 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             teacher: { sortForm: "S.P", fullName: "Sujit Pathak" },
             icon: Atom,
             classTypeIcon: BookOpen,
-            color: "#4F46E5",
+            color: "#F1BA00",
         },
     ]
 } as Record<Day, RoutingDetails[]>;
@@ -254,6 +254,5 @@ export const getTodaysRoutine = () => {
         return [];
     }
 
-    return routingDetails[dayName] || [];
+    return routingDetails["Monday"] || [];
 }
-
