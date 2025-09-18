@@ -32,34 +32,31 @@ export function decimalTo24h(decimal: number): { hour: number; minute: number } 
 }
 
 export function formatTime(seconds: number) {
-        const h = Math.floor(seconds / 3600)
-            .toString()
-            .padStart(2, "0");
-        const m = Math.floor((seconds % 3600) / 60)
-            .toString()
-            .padStart(2, "0");
-        const s = Math.floor(seconds % 60)
-            .toString()
-            .padStart(2, "0");
-        return `${h}:${m}:${s}`;
+    const h = Math.floor(seconds / 3600)
+        .toString()
+        .padStart(2, "0");
+    const m = Math.floor((seconds % 3600) / 60)
+        .toString()
+        .padStart(2, "0");
+    const s = Math.floor(seconds % 60)
+        .toString()
+        .padStart(2, "0");
+    return `${h}:${m}:${s}`;
+}
+
+export function formatNumber(num: number | string): string {
+    if (typeof num === "string") {
+        num = parseFloat(num);
     }
 
-export function getSubjectColor(subject: string): string {
-    const s = subject.toLowerCase();
-
-    if (s.includes("physics")) {
-        return "#4F46E5"; // blue
-    } else if (s.includes("chemistry")) {
-        return "#F1BA00"; // yellow/gold
-    } else if (s.includes("math")) {
-        return "#4561F9"; // dark blue
-    } else if (s.includes("english") || s.includes("communication") || s.includes("skills")) {
-        return "#C400F7"; // pink/purple
-    } else if (s.includes("workshop")) {
-        return "#C400F7"; // pink/purple
-    } else if (s.includes("graphics") || s.includes("drawing")) {
-        return "#C400F7"; // pink/purple
-    } else {
-        return "#4F46E5"; // default blue
+    if (num >= 1_000_000_000) {
+        return (num / 1_000_000_000).toFixed(1).replace(/\.0$/, "") + "b";
     }
+    if (num >= 1_000_000) {
+        return (num / 1_000_000).toFixed(1).replace(/\.0$/, "") + "m";
+    }
+    if (num >= 1_000) {
+        return (num / 1_000).toFixed(1).replace(/\.0$/, "") + "k";
+    }
+    return num.toString();
 }
