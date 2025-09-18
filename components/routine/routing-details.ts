@@ -254,5 +254,5 @@ export const getTodaysRoutine = () => {
         return [];
     }
 
-    return routingDetails["Monday"] || [];
+    return routingDetails[dayName] || [];
 }
