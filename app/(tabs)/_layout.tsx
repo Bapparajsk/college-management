@@ -1,8 +1,8 @@
 import { Tabs, usePathname } from "expo-router";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Platform, Text, Pressable } from "react-native";
-import { CalendarDays, House, Building2, UserRound, GraduationCap } from "lucide-react-native";
+import { Building2, CalendarDays, GraduationCap, House, UserRound } from "lucide-react-native";
 import { useCallback } from "react";
+import { Platform, Pressable, Text } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const TabsScreenList = [
     {
@@ -83,7 +83,11 @@ export default function TabsLayout() {
                                         color={isActiveRoute(tab.name) ? "#007AFF" : "#8e8e93"}
                                         style={{ marginBottom: 4 }}
                                     />
-                                    <Text style={{ color: isActiveRoute(tab.name) ? "#000" : "#8e8e93" }} className="capitalize text-sm font-poppins-semibold">{tab.title}</Text>
+                                    <Text
+                                        style={{ color: isActiveRoute(tab.name) ? "#000" : "#8e8e93" }}
+                                        className="capitalize text-sm font-poppins-semibold">
+                                        {tab.title}
+                                    </Text>
                                 </Pressable>
                             );
                         },

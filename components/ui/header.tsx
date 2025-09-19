@@ -1,5 +1,5 @@
 import { Link } from 'expo-router';
-import { Bell, Cog } from 'lucide-react-native';
+import { Bell, Cog, MessagesSquare } from 'lucide-react-native';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
@@ -20,10 +20,15 @@ export default function Header({ icon, title }: HeaderProps) {
                         title
                     )}
                 </View>
-                <View className="flex flex-row items-center mr-2">
+                <View className="flex flex-row items-center">
                     <Pressable className="p-2 rounded-full bg-default/10">
                         <Link href="/profile" asChild push>
                             <Bell size={23} color={"#374151"} />
+                        </Link>
+                    </Pressable>
+                    <Pressable className="p-2 rounded-full bg-default/10">
+                        <Link href="/profile" asChild push>
+                            <MessagesSquare size={23} color={"#374151"} />
                         </Link>
                     </Pressable>
                     <Pressable className="p-2 rounded-full bg-default/10">
