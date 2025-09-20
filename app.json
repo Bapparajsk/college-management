@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "text-app-fot-phone",
-    "slug": "text-app-fot-phone",
+    "slug": "text-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -45,6 +45,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d1dd7d6f-9a47-4aa0-8f58-20f78be111f5"
+      }
+    },
+    "owner": "bapparaj"
   }
 }

@@ -82,6 +82,7 @@ export default function TabsLayout() {
                                         size={24}
                                         color={isActiveRoute(tab.name) ? "#007AFF" : "#8e8e93"}
                                         style={{ marginBottom: 4 }}
+                                        strokeWidth={isActiveRoute(tab.name) ? 2.5 : 2}
                                     />
                                     <Text
                                         style={{ color: isActiveRoute(tab.name) ? "#000" : "#8e8e93" }}
