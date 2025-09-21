@@ -23,16 +23,18 @@ export default function PostList() {
     }, []);
 
     return (
-        <FlashList
-            ListHeaderComponent={<HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />}
-            contentContainerStyle={{ paddingBottom: 100 }}
-            data={data}
-            keyExtractor={(index) => index.toString()}
-            renderItem={({ item }) => (
-                <PostCard />
-            )}
-            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-            scrollEventThrottle={16}
-        />
+        <>
+            <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+            <FlashList
+                contentContainerStyle={{ paddingBottom: 100 }}
+                data={data}
+                keyExtractor={(index) => index.toString()}
+                renderItem={({ item }) => (
+                    <PostCard />
+                )}
+                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+                scrollEventThrottle={16}
+            />
+        </>
     )
 }

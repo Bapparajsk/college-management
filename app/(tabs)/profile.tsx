@@ -65,15 +65,15 @@ export default function Profile() {
                         justifyContent: "center",
                         alignItems: "center",
                         zIndex: 10,
+                        marginTop: 8,
                         paddingHorizontal: 10,
                     },
                     animatedStyle,
                 ]}
-            // className={"w-full h-20 border px-4 border-b border-default"}
             >
-                <View className="w-full h-full flex-row items-center justify-between">
+                <View className="w-full h-full flex-row items-center justify-between ">
                     <User />
-                    <Pressable className="p-2 rounded-full border border-default flex-row gap-1 items-center">
+                    <Pressable className="py-2 px-3 rounded-full border border-default flex-row gap-1 items-center">
                         <MessageCircle size={18} color={"#000000aa"} />
                         <Text className="text-base font-poppins-semibold text-gray-800">
                             Message
