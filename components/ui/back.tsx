@@ -7,13 +7,14 @@ type BackButtonProps = {
     onPress?: () => void;
     title?: string;
     icon?: React.ReactNode;
+    color?: `#${string}`;
     classNames?: {
         title?: string;
         container?: string;
     }
 }
 
-export default function BackButton({ onPress, title, icon, classNames }: BackButtonProps) {
+export default function BackButton({ onPress, title, icon, classNames, color }: BackButtonProps) {
 
     const router = useRouter();
 
@@ -27,8 +28,8 @@ export default function BackButton({ onPress, title, icon, classNames }: BackBut
 
     return (
         <Pressable className={cn('py-2 flex-row items-center', classNames?.container)} onPress={clickHandler}>
-            {icon || <ChevronLeft size={24} stroke={"#374151"}/>}
-            <Text className={cn('text-lg font-poppins-medium text-gray-700', classNames?.title)}>
+            {icon || <ChevronLeft size={24} stroke={color || "#374151"}/>}
+            <Text style={{ color }} className={cn('text-lg font-poppins-medium text-gray-700', classNames?.title)}>
                 {title ? title : 'Back'}
             </Text>
         </Pressable>

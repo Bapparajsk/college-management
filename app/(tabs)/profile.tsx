@@ -1,10 +1,9 @@
 import { PostCard } from "@/components/home";
-import { ProfileFriendsCards, ProfileHeader } from "@/components/profile";
-import AbsoluteButton from "@/components/ui/absolute-button";
+import { ProfileFriendsCards, ProfileHeader, ProfileSetting } from "@/components/profile";
 import Header from "@/components/ui/header";
 import User from "@/components/ui/user";
 import { FlashList, FlashListRef } from "@shopify/flash-list";
-import { BadgeCheck, CodeXmlIcon, MessageCircle, UserRoundCog } from "lucide-react-native";
+import { BadgeCheck, CodeXmlIcon, MessageCircle } from "lucide-react-native";
 import { Pressable, Text, View } from "react-native";
 import Animated, { interpolate, useAnimatedRef, useAnimatedStyle, useScrollOffset } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -97,8 +96,7 @@ export default function Profile() {
                 data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
                 renderItem={() => <PostCard />}
             />
-
-            <AbsoluteButton icon={<UserRoundCog color={"#ffffff"} />} />
+            <ProfileSetting />
         </SafeAreaView>
     );
 }
