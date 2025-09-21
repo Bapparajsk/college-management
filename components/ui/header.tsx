@@ -10,7 +10,7 @@ type HeaderProps = {
 
 export default function Header({ icon, title }: HeaderProps) {
     return (
-        <View className="h-16 border-b border-b-default p-2">
+        <View className="h-16 border-b border-b-default p-2 z-20">
             <View className="w-full h-full flex flex-row items-center justify-between">
                 <View className="flex flex-row gap-2 items-center">
                     {icon}
