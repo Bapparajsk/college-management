@@ -1,4 +1,5 @@
 import { cn } from '@/utils/cn';
+import { useRouter } from "expo-router";
 import { Plus } from 'lucide-react-native';
 import { Pressable, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -7,14 +8,24 @@ type AbsoluteButtonProps = {
     onPress?: () => void;
     icon?: React.ReactNode;
     className?: string;
+    href?: string;
 }
 
-export default function AbsoluteButton({ onPress, icon, className }: AbsoluteButtonProps) {
+export default function AbsoluteButton({ onPress, icon, className, href }: AbsoluteButtonProps) {
 
     const insets = useSafeAreaInsets();
+    const router = useRouter();
+
+    const handlePress = () => {
+        if (href) {
+            router.push(href as any);
+        } else if (onPress) {
+            onPress();
+        }
+    }
 
     return (
-        <Pressable onPress={onPress} style={{
+        <Pressable onPress={handlePress} style={{
             bottom: insets.bottom + 90, shadowColor: "#000",
             shadowOffset: {
                 width: 0,

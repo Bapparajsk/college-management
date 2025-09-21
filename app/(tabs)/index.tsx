@@ -4,7 +4,7 @@ import Header from "@/components/ui/header";
 import { FlashList } from "@shopify/flash-list";
 import { MessageSquarePlus, School } from "lucide-react-native";
 import { useCallback, useState } from "react";
-import { RefreshControl } from "react-native";
+import { RefreshControl, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
@@ -27,8 +27,13 @@ export default function Index() {
     return (
         <SafeAreaView style={{ flex: 1 }} >
             <Header icon={<School size={24} />} title="EIEM" />
-            <AbsoluteButton icon={<MessageSquarePlus color={"#ffffff"} />} />
+            <AbsoluteButton icon={<MessageSquarePlus color={"#ffffff"} />} href="/new-post"/>
             <FlashList
+                ListHeaderComponent={
+                    <View className="w-full h-14 flex-row items-center gap-1 px-4">
+                        <Text className="text-lg font-poppins-semibold text-black">Posts</Text>
+                    </View>
+                }
                 contentContainerStyle={{ paddingBottom: 100 }}
                 data={data}
                 keyExtractor={(index) => index.toString()}

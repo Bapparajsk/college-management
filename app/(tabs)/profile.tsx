@@ -2,9 +2,10 @@ import { PostCard } from "@/components/home";
 import { ProfileFriendsCards, ProfileHeader } from "@/components/profile";
 import AbsoluteButton from "@/components/ui/absolute-button";
 import Header from "@/components/ui/header";
+import User from "@/components/ui/user";
 import { FlashList, FlashListRef } from "@shopify/flash-list";
 import { BadgeCheck, CodeXmlIcon, MessageCircle, UserRoundCog } from "lucide-react-native";
-import { Image, Pressable, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import Animated, { interpolate, useAnimatedRef, useAnimatedStyle, useScrollOffset } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -68,33 +69,10 @@ export default function Profile() {
                     },
                     animatedStyle,
                 ]}
-                // className={"w-full h-20 border px-4 border-b border-default"}
+            // className={"w-full h-20 border px-4 border-b border-default"}
             >
                 <View className="w-full h-full flex-row items-center justify-between">
-                    <View className="h-16 w-auto flex-row gap-2 items-center">
-                        <View className="w-16 h-full rounded-full overflow-hidden">
-                            <Image
-                                source={{
-                                    uri: "https://img.freepik.com/premium-photo/portrait-successful-programmer-game-developer-coder-guy-uses-computer-laptop-work-game-design-hacker-boy-generative-ai-gamer-headphones_117038-5485.jpg",
-                                }}
-                                className="size-full rounded-full object-cover"
-                            />
-                        </View>
-                        <View className="h-full justify-center gap-1">
-                            <Text
-                                className="text-lg font-poppins-semibold max-w-64"
-                                numberOfLines={1}
-                            >
-                                Bapparaj sk
-                            </Text>
-                            <Text
-                                className="text-sm font-poppins-semibold text-gray-950 min-w-64"
-                                numberOfLines={1}
-                            >
-                                C.S.T - <Text className='font-poppins-medium text-gray-600'>First Year</Text>
-                            </Text>
-                        </View>
-                    </View>
+                    <User />
                     <Pressable className="p-2 rounded-full border border-default flex-row gap-1 items-center">
                         <MessageCircle size={18} color={"#000000aa"} />
                         <Text className="text-base font-poppins-semibold text-gray-800">
