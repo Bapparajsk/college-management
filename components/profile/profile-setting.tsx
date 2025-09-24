@@ -5,8 +5,6 @@ import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import AbsoluteButton from '../ui/absolute-button';
 import BackButton from '../ui/back';
 
-// const Container = styled(LinearGradient);
-
 export default function ProfileSetting() {
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -25,9 +23,9 @@ export default function ProfileSetting() {
             >
                 <View className="bg-white flex-1">
                     <LinearGradient
-                        colors={['#d0e8ff', '#cae9ff', '#c3eafd', '#bdeafb', '#b8ebf8', '#b2eaf6', '#ace9f3', '#a6e8f0', '#9de6ee', '#94e3ed', '#8ae1eb', '#80deea']} // Light cyan/teal gradient
-                        start={{ x: 0, y: 0 }}   // Top-left
-                        end={{ x: 1, y: 1 }}     // Bottom-right
+                        colors={['#d0e8ff', '#cae9ff', '#c3eafd', '#bdeafb', '#b8ebf8', '#b2eaf6', '#ace9f3', '#a6e8f0', '#9de6ee', '#94e3ed', '#8ae1eb', '#80deea']}
+                        start={{ x: 1, y: 1 }}
+                        end={{ x: 0, y: 0 }}
                         style={{
                             flex: 1,
                         }}
@@ -37,7 +35,7 @@ export default function ProfileSetting() {
                                 <BackButton
                                     onPress={() => setModalVisible(false)}
                                     title='Profile'
-                                    color='#3b82f6'
+                                    // color='#3b82f6'
                                     classNames={{ title: 'text-xl' }}
                                 />
                             </View>

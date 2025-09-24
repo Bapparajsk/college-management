@@ -10,6 +10,7 @@ export type RoutingDetails = {
     icon: LucideIcon;
     classTypeIcon: LucideIcon;
     color?: string;
+    isExpanded?: boolean
 }
 
 
