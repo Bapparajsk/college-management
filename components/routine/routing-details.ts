@@ -246,7 +246,9 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
 } as Record<Day, RoutingDetails[]>;
 
 
-export const getTodaysRoutine = () => {
+export const getTodaysRoutine = (d?: Day) => {
+    if(d) return routingDetails[d] || [];
+
     const days: Day[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const today = new Date();
     const dayName = days[today.getDay()] as Day;

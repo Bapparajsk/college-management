@@ -12,7 +12,6 @@ import Animated, {
 import { RoutingDetails } from './routing-details';
 
 
-
 const RoutingCard = ({
     subject,
     classType,
@@ -23,7 +22,6 @@ const RoutingCard = ({
     classTypeIcon: ClassTypeIcon,
     icon: SubjectIcon,
     color,
-    isExpanded
 }: RoutingDetails) => {
     const [countdown, setCountdown] = useState("");
 
@@ -54,7 +52,7 @@ const RoutingCard = ({
             }
             return "00:00:00";
         };
-    
+
 
         // Set initial value
         setCountdown(calculateCountdown());
@@ -74,14 +72,13 @@ const RoutingCard = ({
             exiting={FadeOutUp.duration(200).easing(Easing.out(Easing.quad))}
             style={[{ borderWidth: 1, borderColor: "#E5E7EB", backgroundColor: "#FFFFFF", borderRadius: 12, overflow: "hidden" }]}
         >
-            {/* <Pressable onPr android_ripple={{ color: '#00000010' }}> */}
             <View className="w-full h-20 flex flex-row items-center justify-between px-3">
                 <View className="flex flex-row items-center gap-2">
                     <View style={{ backgroundColor: color + "30", borderColor: color + "60" }} className={"relative size-14 rounded-full border-2 flex items-center justify-center"}>
                         <SubjectIcon color={color} />
                     </View>
                     <View>
-                        <Text className="text-lg font-poppins-semibold max-w-[270px]" numberOfLines={1}>
+                        <Text className="text-lg font-poppins-semibold" numberOfLines={1}>
                             {subject}
                             <Text className="text-base font-poppins-regular text-gray-700">
                                 {" "} {teacher?.sortForm && `(${teacher.sortForm})`} {room && `- (${room})`}
@@ -96,10 +93,7 @@ const RoutingCard = ({
             </View>
 
 
-            <Animated.View
-                className="px-3 border-t h-auto"
-                // style={[{ overflow: "hidden" }]}
-            >
+            <View className="px-3 border-t border-default h-auto">
                 <View className="py-2">
                     <View className="flex-row justify-between items-center mb-1">
                         <Text className="text-sm font-poppins text-gray-600">
@@ -148,8 +142,7 @@ const RoutingCard = ({
                         </View>
                     </View>
                 </View>
-            </Animated.View>
-            {/* </Pressable> */}
+            </View>
         </Animated.View>
     )
 }
