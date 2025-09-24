@@ -1,14 +1,41 @@
-import { Link } from 'expo-router';
+import { Link, usePathname } from 'expo-router';
 import { Bell, Cog, MessagesSquare } from 'lucide-react-native';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
+import If from './if';
 
 type HeaderProps = {
-    icon: React.ReactNode;
-    title: string | React.ReactNode;
+    icon?: React.ReactNode;
+    title?: string | React.ReactNode;
+    current?: "notification" | "chat" | "setting" | null;
 }
 
-export default function Header({ icon, title }: HeaderProps) {
+const links: {
+    href: "/notification" | "/chat" | "/setting";
+    icon: React.ReactNode;
+    name: "notification" | "chat" | "setting";
+}[] = [
+        {
+            href: "/notification",
+            icon: <Bell size={23} color={"#374151"} />,
+            name: "notification"
+        },
+        {
+            href: "/chat",
+            icon: <MessagesSquare size={23} color={"#374151"} />,
+            name: "chat"
+        },
+        {
+            href: "/setting",
+            icon: <Cog size={25} color={"#007AFF"} />,
+            name: "setting"
+        }
+    ]
+
+export default function Header({ icon, title, current }: HeaderProps) {
+
+    const pathName = usePathname();
+
     return (
         <View className="h-16 border-b border-b-default p-2">
             <View className="w-full h-full flex flex-row items-center justify-between">
@@ -21,21 +48,19 @@ export default function Header({ icon, title }: HeaderProps) {
                     )}
                 </View>
                 <View className="flex flex-row items-center">
-                    <Pressable className="p-2 rounded-full bg-default/10">
-                        <Link href="/profile" asChild push>
-                            <Bell size={23} color={"#374151"} />
-                        </Link>
-                    </Pressable>
-                    <Pressable className="p-2 rounded-full bg-default/10">
-                        <Link href="/profile" asChild push>
-                            <MessagesSquare size={23} color={"#374151"} />
-                        </Link>
-                    </Pressable>
-                    <Pressable className="p-2 rounded-full bg-default/10">
-                        <Link href="/profile" asChild push>
-                            <Cog size={25} color={"#007AFF"} />
-                        </Link>
-                    </Pressable>
+                    {links.map(({ href, icon, name }) => (
+                        <If
+                            key={name}
+                            condition={current !== name}
+                            IfComponent={
+                                <Pressable key={name} className="p-2 rounded-full bg-default/10">
+                                    <Link href={{ pathname: href, params: { prevPath: pathName } }} asChild push>
+                                        {icon}
+                                    </Link>
+                                </Pressable>
+                            }
+                        />
+                    ))}
                 </View>
             </View>
         </View>

@@ -9,8 +9,8 @@ export default function Index() {
                 alignItems: "center",
             }}
         >
-            <Text className="text-3xl text-pink-300">
-                profile
+            <Text className="text-3xl font-poppins-semibold">
+                Coming Soon...
             </Text>
         </View>
     );

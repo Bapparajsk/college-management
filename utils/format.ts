@@ -60,3 +60,30 @@ export function formatNumber(num: number | string): string {
     }
     return num.toString();
 }
+
+
+export function getReadableRoot(pathname?: string): string {
+    if(!pathname) {
+        return "Back"
+    }
+
+    if (pathname === "/") {
+        return "Home";
+    }
+
+    // remove query params and hash
+    const cleanPath = pathname.split(/[?#]/)[0];
+
+    // split into segments
+    const segments = cleanPath.split("/").filter(Boolean);
+
+    if (segments.length === 0) return "Home";
+
+    // take first segment (root)
+    let root = segments[0];
+
+    // remove special chars like (group) or [dynamic]
+    root = root.replace(/[()[\]]/g, "");
+
+    return root || "Home";
+}
