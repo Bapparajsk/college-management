@@ -1,6 +1,7 @@
 import Header from "@/components/ui/header";
+import Input from "@/components/ui/input";
 import { GraduationCap, Grip, Search } from "lucide-react-native";
-import { Image, Pressable, Text, TextInput, View } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Faculty() {
@@ -9,15 +10,11 @@ export default function Faculty() {
             style={{ flex: 1 }}
         >
             <Header icon={<GraduationCap size={29} />} title="Faculty" />
-            <View className="w-full h-20 flex items-center justify-center">
-                <View className="w-11/12 h-14 flex-row items-center px-4 bg-gray-300/90 rounded-full border border-default">
-                    <Search size={20} color="#555" />
-                    <TextInput
-                        placeholder="Search Faculty..."
-                        placeholderTextColor="#555"
-                        className="flex-1 ml-2 text-[15px] font-inter"
-                    />
-                </View>
+            <View className="w-full h-20 flex items-center justify-center px-3">
+                <Input
+                    startContent={<Search size={20} color="#555" />}
+                    placeholder="Search Faculty..."
+                />
             </View>
             <View className="flex-1">
                 <View className="w-full h-20 px-4 flex flex-row items-center justify-between bg-white border-b border-default">

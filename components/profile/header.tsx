@@ -55,25 +55,21 @@ export default function Header() {
             </View>
             <View className='h-auto w-full justify-center items-start px-2 pb-2 gap-1 border-b border-default'>
                 <PinDetails
-                    // icon={<Linkedin size={18} />}
                     icon={<MapPin size={18} />}
                     text="West Bengal/Murshidabad/Patikabari"
                     className='max-w-[80%] text-black'
                 />
                 <PinDetails
-                    // icon={<Linkedin size={18} />}
                     icon={<Facebook size={18} />}
                     text="bapparaj.sk.796"
                     onClick={openApp}
                 />
                 <PinDetails
-                    // icon={<Facebook size={18} />}
                     icon={<Github size={18} />}
                     text="Bapparajsk"
                     onClick={openApp}
                 />
                 <PinDetails
-                    // icon={<Facebook size={18} />}
                     icon={<Link size={18} />}
                     text="https://bapparaj.tech/"
                     onClick={openApp}

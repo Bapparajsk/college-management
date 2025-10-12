@@ -19,7 +19,6 @@ export default function ProfileSetting() {
                 transparent={false}
                 visible={modalVisible}
                 onRequestClose={() => setModalVisible(false)} // for Android back button
-                navigationBarTranslucent={true} // for Android navigation bar
             >
                 <View className="bg-white flex-1">
                     <LinearGradient

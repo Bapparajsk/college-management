@@ -10,8 +10,13 @@ export default function ChatHeader() {
     return (
         <Header
             current={"chat"}
-            icon={<BackButton classNames={{ title: "text-black text-xl font-poppins-semibold" }}
-            title={getReadableRoot(prevPath)} />}
+            icon={
+                <BackButton
+                    title={getReadableRoot(prevPath)}
+                    classNames={{ title: "text-black text-xl font-poppins-semibold" }}
+                    color="#3396D3"
+                />
+            }
         />
     )
 }

@@ -24,7 +24,7 @@ export default function PostList() {
 
     return (
         <>
-            <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+            <HeaderTabs activeTab={activeTab} setActiveTab={tab => setActiveTab(tab)} />
             <FlashList
                 contentContainerStyle={{ paddingBottom: 100 }}
                 data={data}
