@@ -24,8 +24,8 @@ export default function PostList() {
 
     return (
         <>
-            <HeaderTabs activeTab={activeTab} setActiveTab={tab => setActiveTab(tab)} />
             <FlashList
+                ListHeaderComponent={<HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />}
                 contentContainerStyle={{ paddingBottom: 100 }}
                 data={data}
                 keyExtractor={(index) => index.toString()}
