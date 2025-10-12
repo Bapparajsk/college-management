@@ -1,12 +1,14 @@
 import { cn } from "@/utils/cn";
+import { useRouter } from "expo-router";
 import React, { ReactNode, memo } from "react";
 import {
     ActivityIndicator,
+    GestureResponderEvent,
     Platform,
     Pressable,
     PressableProps,
     Text,
-    View,
+    View
 } from "react-native";
 
 export type ButtonProps = PressableProps & {
@@ -24,6 +26,7 @@ export type ButtonProps = PressableProps & {
     rippleColor?: string;
     className?: string;
     textClassName?: string;
+    href?: string;
 };
 
 // ---------------- Box Shadow ----------------
@@ -64,14 +67,14 @@ const getBoxShadow = (
 // ---------------- Base Colors ----------------
 const baseColors: Record<
     NonNullable<ButtonProps["color"]>,
-    { bg: string; border: string; text: string }
+    { bg: string; border: string; text: string, flatBg?: string }
 > = {
-    primary: { bg: "bg-[#006FEE]", border: "border-[#006FEE]", text: "text-white" },
-    secondary: { bg: "bg-[#9353d3]", border: "border-[#9353d3]", text: "text-white" },
-    danger: { bg: "bg-[#f31260]", border: "border-[#f31260]", text: "text-white" },
-    warning: { bg: "bg-[#f5a524]", border: "border-[#f5a524]", text: "text-white" },
-    success: { bg: "bg-[#17c964]", border: "border-[#17c964]", text: "text-white" },
-    default: { bg: "bg-white", border: "border-gray-300", text: "text-gray-800" },
+    primary: { bg: "bg-[#006FEE]", border: "border-[#006FEE]", text: "text-white", flatBg: "bg-[#006FEE]/[0.4]" },
+    secondary: { bg: "bg-[#9353d3]", border: "border-[#9353d3]", text: "text-white", flatBg: "bg-[#9353d3]/[0.4]" },
+    danger: { bg: "bg-[#f31260]", border: "border-[#f31260]", text: "text-white", flatBg: "bg-[#f31260]/[0.4]" },
+    warning: { bg: "bg-[#f5a524]", border: "border-[#f5a524]", text: "text-white", flatBg: "bg-[#f5a524]/[0.4]" },
+    success: { bg: "bg-[#17c964]", border: "border-[#17c964]", text: "text-white", flatBg: "bg-[#17c964]/[0.4]" },
+    default: { bg: "bg-white", border: "border-gray-300", text: "text-gray-800", flatBg: "bg-white/[0.4]" },
 };
 
 // ---------------- Variants ----------------
@@ -79,7 +82,7 @@ const getVariantStyle = (
     variant: NonNullable<ButtonProps["variant"]>,
     color: NonNullable<ButtonProps["color"]>
 ) => {
-    const { bg, border, } = baseColors[color];
+    const { bg, border, flatBg } = baseColors[color];
 
     switch (variant) {
         case "solid":
@@ -89,7 +92,10 @@ const getVariantStyle = (
         case "light":
             return `bg-transparent border-transparent`;
         case "flat":
-            return `${bg}/[0.5] border-transparent`;
+            const bgFlat = color === "default" ? "bg-gray-200" : flatBg; // 20% opacity
+            console.log(bgFlat);
+            
+            return `${bgFlat} border-transparent`;
         default:
             return `${bg} ${border}`;
     }
@@ -142,12 +148,24 @@ export const Button = memo((props: ButtonProps) => {
         style,
         className,
         textClassName,
+        href,
+        onPress,
         ...rest
     } = props;
+
+    const router = useRouter();
 
     const boxShadowStyle = getBoxShadow(boxShadow, shadowColor);
     const variantStyle = getVariantStyle(variant, color);
     const textColor = getTextColor(variant, color);
+
+    const handlePress = (event: GestureResponderEvent) => {
+        if (href) {
+            router.push(href as any);
+        } else if (onPress) {
+            onPress(event);
+        }
+    }
 
     return (
         <Pressable
@@ -171,7 +189,9 @@ export const Button = memo((props: ButtonProps) => {
                 radiusStyles[radius],
                 className
             )}
+            onPress={handlePress}
             {...rest}
+            
         >
             {loading ? (
                 <ActivityIndicator color={color === "default" ? "#000" : "#fff"} />
