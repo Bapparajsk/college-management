@@ -14,8 +14,9 @@ export type ButtonProps = PressableProps & {
     size?: "sm" | "md" | "lg";
     radius?: "sm" | "md" | "lg" | "full";
     boxShadow?: "sm" | "md" | "lg";
+    variant?: "solid" | "bordered" | "light" | "flat";
     shadowColor?: `#${string}` | `rgb(${number}, ${number}, ${number})` | `rgba(${number}, ${number}, ${number}, ${number})`;
-    variant?: "primary" | "secondary" | "danger" | "warning" | "success" | "default";
+    color?: "primary" | "secondary" | "danger" | "warning" | "success" | "default";
     disabled?: boolean;
     loading?: boolean;
     startIcon?: ReactNode;
@@ -25,6 +26,7 @@ export type ButtonProps = PressableProps & {
     textClassName?: string;
 };
 
+// ---------------- Box Shadow ----------------
 const getBoxShadow = (
     boxShadow: ButtonProps["boxShadow"],
     shadowColor: ButtonProps["shadowColor"]
@@ -59,29 +61,58 @@ const getBoxShadow = (
     return shadows;
 };
 
-const variantStyles: Record<
-    NonNullable<ButtonProps["variant"]>,
-    string
+// ---------------- Base Colors ----------------
+const baseColors: Record<
+    NonNullable<ButtonProps["color"]>,
+    { bg: string; border: string; text: string }
 > = {
-    primary: "bg-[#006FEE] border-blue-600",
-    secondary: "bg-[#9353d3] border-gray-300",
-    danger: "bg-[#f31260] border-red-600",
-    warning: "bg-[#f5a524] border-yellow-500",
-    success: "bg-[#17c964] border-green-600",
-    default: "bg-white border-default",
+    primary: { bg: "bg-[#006FEE]", border: "border-[#006FEE]", text: "text-white" },
+    secondary: { bg: "bg-[#9353d3]", border: "border-[#9353d3]", text: "text-white" },
+    danger: { bg: "bg-[#f31260]", border: "border-[#f31260]", text: "text-white" },
+    warning: { bg: "bg-[#f5a524]", border: "border-[#f5a524]", text: "text-white" },
+    success: { bg: "bg-[#17c964]", border: "border-[#17c964]", text: "text-white" },
+    default: { bg: "bg-white", border: "border-gray-300", text: "text-gray-800" },
 };
 
-const textVariantStyles: Record<NonNullable<ButtonProps["variant"]>, string> = {
-    primary: "text-white",
-    secondary: "text-gray-800",
-    danger: "text-white",
-    warning: "text-white",
-    success: "text-white",
-    default: "text-gray-800",
+// ---------------- Variants ----------------
+const getVariantStyle = (
+    variant: NonNullable<ButtonProps["variant"]>,
+    color: NonNullable<ButtonProps["color"]>
+) => {
+    const { bg, border, } = baseColors[color];
+
+    switch (variant) {
+        case "solid":
+            return `${bg} ${border}`;
+        case "bordered":
+            return `bg-transparent ${border} border-2`;
+        case "light":
+            return `bg-transparent border-transparent`;
+        case "flat":
+            return `${bg}/[0.5] border-transparent`;
+        default:
+            return `${bg} ${border}`;
+    }
 };
 
+const getTextColor = (
+    variant: NonNullable<ButtonProps["variant"]>,
+    color: NonNullable<ButtonProps["color"]>
+) => {
+    const { text } = baseColors[color];
+
+    switch (variant) {
+        case "bordered":
+        case "light":
+            return color === "default" ? "text-gray-800" : `text-[${baseColors[color].border.replace("border-", "")}]`;
+        default:
+            return text;
+    }
+};
+
+// ---------------- Sizes & Radius ----------------
 const sizeStyles: Record<NonNullable<ButtonProps["size"]>, string> = {
-    sm: "h-0 px-3",
+    sm: "h-10 px-3",
     md: "h-12 px-4",
     lg: "h-14 px-6",
 };
@@ -93,6 +124,7 @@ const radiusStyles: Record<NonNullable<ButtonProps["radius"]>, string> = {
     full: "rounded-full",
 };
 
+// ---------------- Component ----------------
 export const Button = memo((props: ButtonProps) => {
     const {
         children,
@@ -100,9 +132,10 @@ export const Button = memo((props: ButtonProps) => {
         endIcon,
         loading,
         disabled,
-        variant = "default",
+        color = "default",
         size = "md",
         radius = "md",
+        variant = "solid",
         boxShadow,
         shadowColor,
         rippleColor,
@@ -113,6 +146,8 @@ export const Button = memo((props: ButtonProps) => {
     } = props;
 
     const boxShadowStyle = getBoxShadow(boxShadow, shadowColor);
+    const variantStyle = getVariantStyle(variant, color);
+    const textColor = getTextColor(variant, color);
 
     return (
         <Pressable
@@ -131,7 +166,7 @@ export const Button = memo((props: ButtonProps) => {
             ]}
             className={cn(
                 "flex-row items-center justify-center border overflow-hidden",
-                variantStyles[variant],
+                variantStyle,
                 sizeStyles[size],
                 radiusStyles[radius],
                 className
@@ -139,12 +174,18 @@ export const Button = memo((props: ButtonProps) => {
             {...rest}
         >
             {loading ? (
-                <ActivityIndicator color={variant === "default" ? "#000" : "#fff"} />
+                <ActivityIndicator color={color === "default" ? "#000" : "#fff"} />
             ) : (
                 <View className="flex-row items-center justify-center space-x-2">
                     {startIcon ? <View>{startIcon}</View> : null}
                     {typeof children === "string" ? (
-                        <Text className={cn("font-poppins text-base", textVariantStyles[variant], textClassName)}>
+                        <Text
+                            className={cn(
+                                "font-poppins text-base",
+                                textColor,
+                                textClassName
+                            )}
+                        >
                             {children}
                         </Text>
                     ) : (
