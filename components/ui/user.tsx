@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, Text, View } from 'react-native';
+import {cn} from "@/utils/cn";
 
 
 type UserProps = {
@@ -18,7 +19,7 @@ export default function User({ name, department, year, size }: UserProps) {
     };
 
     return (
-        <View className="h-16 w-auto flex-row gap-2 items-center">
+        <View className={cn("h-16 w-auto flex-row items-center", name || department || year ? "gap-2" : "")}>
             <View style={{ width: sizes[size || "sm"], height: sizes[size || "sm"] }} className="rounded-full overflow-hidden">
                 <Image
                     source={{
