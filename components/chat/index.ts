@@ -1,4 +1,3 @@
-import ChatList from "./chat-list";
-import ChatHeader from "./header";
+import Wrapper from "./wrapper";
 
-export { ChatHeader, ChatList };
+export { Wrapper };

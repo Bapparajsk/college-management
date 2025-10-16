@@ -1,5 +1,5 @@
 import { Tabs, usePathname } from "expo-router";
-import { Building2, CalendarDays, GraduationCap, House, UserRound } from "lucide-react-native";
+import { Building2, CalendarDays, House, MessagesSquare, UserRound } from "lucide-react-native";
 import { useCallback } from "react";
 import { Platform, Pressable, Text } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -11,9 +11,9 @@ const TabsScreenList = [
         icon: House,
     },
     {
-        name: "faculty",
-        title: "Faculty",
-        icon: GraduationCap,
+        name: "departments",
+        title: "Departments",
+        icon: Building2,
     },
     {
         name: "routine",
@@ -21,9 +21,9 @@ const TabsScreenList = [
         icon: CalendarDays,
     },
     {
-        name: "departments",
-        title: "Departments",
-        icon: Building2,
+        name: "chat",
+        title: "Chat",
+        icon: MessagesSquare,
     },
     {
         name: "profile",

@@ -1,5 +1,5 @@
 import { Link, usePathname } from 'expo-router';
-import { Bell, Cog, MessagesSquare } from 'lucide-react-native';
+import { Bell, Cog } from 'lucide-react-native';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import If from './if';
@@ -7,23 +7,18 @@ import If from './if';
 type HeaderProps = {
     icon?: React.ReactNode;
     title?: string | React.ReactNode;
-    current?: "notification" | "chat" | "setting" | null;
+    current?: "notification" | "setting" | null;
 }
 
 const links: {
-    href: "/notification" | "/chat" | "/setting";
+    href: "/notification"  | "/setting";
     icon: React.ReactNode;
-    name: "notification" | "chat" | "setting";
+    name: "notification" | "setting";
 }[] = [
         {
             href: "/notification",
             icon: <Bell size={23} color={"#374151"} />,
             name: "notification"
-        },
-        {
-            href: "/chat",
-            icon: <MessagesSquare size={23} color={"#374151"} />,
-            name: "chat"
         },
         {
             href: "/setting",
