@@ -4,12 +4,8 @@ import { Text, View } from 'react-native';
 import { Button } from '../ui/button';
 import User from '../ui/user';
 
-type HeaderTabsProps = {
-    activeTab: "Posts" | "Saved";
-    setActiveTab: (tab: "Posts" | "Saved") => void;
-};
 
-export default function HeaderTabs({ setActiveTab }: HeaderTabsProps) {
+export default function HeaderTabs() {
 
     return (
         <View className="w-full h-20 flex-row items-center justify-between px-4 gap-2 border-b border-gray-300">
@@ -19,7 +15,7 @@ export default function HeaderTabs({ setActiveTab }: HeaderTabsProps) {
                     Add Note...
                 </Text>
             </Button>
-            <Button radius='lg' variant='flat' boxShadow='lg' color='primary' onPress={() => setActiveTab("Saved")}>
+            <Button href='/new-post' radius='lg' variant='flat' boxShadow='lg' color='primary'>
                 <BookMarked color={"#000"} size={18} />
             </Button>
         </View>

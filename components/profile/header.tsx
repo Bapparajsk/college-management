@@ -10,8 +10,8 @@ export default function Header() {
     };
 
     return (
-        <View className='border-b border-default px-4'>
-            <View className="w-full h-44 flex-row items-center px-2">
+        <View className='border-b border-default'>
+            <View className="w-full h-44 flex-row items-center px-3">
                 {/* Left - Avatar */}
                 <View style={{
                     borderColor: '#1DA1F2',
@@ -53,7 +53,7 @@ export default function Header() {
                     </Text>
                 </View>
             </View>
-            <View className='h-auto w-full justify-center items-start px-2 pb-2 gap-1 border-b border-default'>
+            <View className='h-auto w-full justify-center items-start px-3 pb-2 gap-1 border-b border-default'>
                 <PinDetails
                     icon={<MapPin size={18} />}
                     text="West Bengal/Murshidabad/Patikabari"
@@ -75,7 +75,7 @@ export default function Header() {
                     onClick={openApp}
                 />
             </View>
-            <View className='h-auto w-full justify-center flex-row items-start px-2 py-2 gap-1 border-b border-default'>
+            <View className='h-auto w-full justify-center flex-row items-start px-3 py-2 gap-1 border-b border-default'>
                 <Pressable
                     style={{
                         shadowColor: "#000",

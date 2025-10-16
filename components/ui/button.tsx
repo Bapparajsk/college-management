@@ -92,9 +92,7 @@ const getVariantStyle = (
         case "light":
             return `bg-transparent border-transparent`;
         case "flat":
-            const bgFlat = color === "default" ? "bg-gray-200" : flatBg; // 20% opacity
-            console.log(bgFlat);
-            
+            const bgFlat = color === "default" ? "bg-gray-200" : flatBg; // 20% opacity            
             return `${bgFlat} border-transparent`;
         default:
             return `${bg} ${border}`;

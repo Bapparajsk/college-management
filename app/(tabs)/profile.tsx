@@ -1,10 +1,11 @@
 import { PostCard } from "@/components/home";
 import { ProfileFriendsCards, ProfileHeader, ProfileSetting } from "@/components/profile";
+import { Button } from "@/components/ui/button";
 import Header from "@/components/ui/header";
 import User from "@/components/ui/user";
 import { FlashList, FlashListRef } from "@shopify/flash-list";
 import { BadgeCheck, CodeXmlIcon, MessageCircle } from "lucide-react-native";
-import { Pressable, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import Animated, { interpolate, useAnimatedRef, useAnimatedStyle, useScrollOffset } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -71,13 +72,15 @@ export default function Profile() {
                 ]}
             >
                 <View className="w-full h-full flex-row items-center justify-between ">
-                    <User />
-                    <Pressable className="py-2 px-3 rounded-full border border-default flex-row gap-1 items-center">
-                        <MessageCircle size={18} color={"#000000aa"} />
-                        <Text className="text-base font-poppins-semibold text-gray-800">
-                            Message
-                        </Text>
-                    </Pressable>
+                    <User name="Bapparaj sk" department="C.S.T" year="First Year" />
+                    <Button variant="bordered" color="default" size="sm" radius="full">
+                        <View className="flex-row items-center justify-center gap-1">
+                            <MessageCircle size={18} color={"#000000aa"} />
+                            <Text className="text-base font-poppins-semibold ">
+                                Message
+                            </Text>
+                        </View>
+                    </Button>
                 </View>
             </Animated.View>
 

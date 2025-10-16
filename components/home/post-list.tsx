@@ -1,15 +1,13 @@
 import { FlashList } from '@shopify/flash-list';
 import React, { useCallback, useState } from 'react';
 import { RefreshControl } from 'react-native';
-import { PostCard } from '.';
 import HeaderTabs from './header-tabs';
+import PostCard from './post-card';
 
 export default function PostList() {
 
     const [data, setData] = useState(Array.from({ length: 5 }, (_, i) => `Item ${i + 1}`));
-
     const [refreshing, setRefreshing] = useState(false);
-    const [activeTab, setActiveTab] = useState<"Posts" | "Saved">('Posts');
 
     const onRefresh = useCallback(() => {
         setRefreshing(true);
@@ -23,18 +21,16 @@ export default function PostList() {
     }, []);
 
     return (
-        <>
-            <FlashList
-                ListHeaderComponent={<HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />}
-                contentContainerStyle={{ paddingBottom: 100 }}
-                data={data}
-                keyExtractor={(index) => index.toString()}
-                renderItem={({ item }) => (
-                    <PostCard />
-                )}
-                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-                scrollEventThrottle={16}
-            />
-        </>
+        <FlashList
+            ListHeaderComponent={<HeaderTabs />}
+            contentContainerStyle={{ paddingBottom: 100 }}
+            data={data}
+            keyExtractor={(index) => index.toString()}
+            renderItem={({ item }) => (
+                <PostCard />
+            )}
+            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+            scrollEventThrottle={16}
+        />
     )
 }
