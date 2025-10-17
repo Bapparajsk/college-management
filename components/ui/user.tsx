@@ -1,6 +1,6 @@
+import { cn } from "@/utils/cn";
 import React from 'react';
 import { Image, Text, View } from 'react-native';
-import {cn} from "@/utils/cn";
 
 
 type UserProps = {
@@ -8,9 +8,11 @@ type UserProps = {
     department?: string;
     year?: string;
     size?: "sm" | "md" | "lg";
+    titleClassName?: string;
+    avatarUrl?: string;
 }
 
-export default function User({ name, department, year, size }: UserProps) {
+export default function User({ name, department, year = "", size, titleClassName, avatarUrl }: UserProps) {
 
     const sizes = {
         sm: 48,
@@ -23,7 +25,7 @@ export default function User({ name, department, year, size }: UserProps) {
             <View style={{ width: sizes[size || "sm"], height: sizes[size || "sm"] }} className="rounded-full overflow-hidden">
                 <Image
                     source={{
-                        uri: "https://img.freepik.com/premium-photo/portrait-successful-programmer-game-developer-coder-guy-uses-computer-laptop-work-game-design-hacker-boy-generative-ai-gamer-headphones_117038-5485.jpg",
+                        uri: avatarUrl || "https://img.freepik.com/premium-photo/portrait-successful-programmer-game-developer-coder-guy-uses-computer-laptop-work-game-design-hacker-boy-generative-ai-gamer-headphones_117038-5485.jpg",
                     }}
                     className="size-full rounded-full object-cover"
                 />
@@ -36,10 +38,10 @@ export default function User({ name, department, year, size }: UserProps) {
                     {name}
                 </Text>
                 <Text
-                    className="text-sm font-poppins-semibold text-gray-950 max-w-64"
+                    className={cn(`text-sm font-poppins-semibold text-gray-950 max-w-64`, titleClassName)}
                     numberOfLines={1}
                 >
-                    {department && `${department} -`} <Text className='font-poppins-medium text-gray-600'>{year}</Text>
+                    {department && `${department}${year && ' - '}`} <Text className='font-poppins-medium text-gray-600'>{year}</Text>
                 </Text>
             </View>
         </View>
