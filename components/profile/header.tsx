@@ -52,7 +52,7 @@ export default function Header() {
                     </Text>
                 </View>
             </View>
-            <View className='h-auto w-full justify-center items-start px-3 pb-2 gap-1 border-b border-default'>
+            <View className='h-auto w-full justify-center items-start px-3 pb-2 gap-1 border-default'>
                 <PinDetails
                     icon={<MapPin size={18} />}
                     text="West Bengal/Murshidabad/Patikabari"

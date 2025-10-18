@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/ui/header";
 import User from "@/components/ui/user";
 import { FlashList, FlashListRef } from "@shopify/flash-list";
-import { BadgeCheck, CodeXmlIcon, MessageCircle } from "lucide-react-native";
+import { BadgeCheck, CodeXmlIcon, IndianRupee, MessageCircle, MessageSquarePlus, Newspaper } from "lucide-react-native";
 import { Text, View } from "react-native";
 import Animated, { interpolate, useAnimatedRef, useAnimatedStyle, useScrollOffset } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -83,12 +83,31 @@ export default function Profile() {
                     </Button>
                 </View>
             </Animated.View>
-
             <FlashList
                 ref={flashListRef}
                 ListHeaderComponent={
                     <>
                         <ProfileHeader />
+                        <View className="w-full h-16 flex-row gap-2 items-center justify-center border-b border-default">
+                            <Button variant="bordered" className="border-gray-400" color="default" size="sm" radius="lg">
+                                <MessageSquarePlus size={18} color={"#2563eb"} />
+                                <Text className="text-base font-poppins-semibold ml-1 text-blue-600">
+                                    Posts
+                                </Text>
+                            </Button>
+                            <Button variant="bordered" color="default" className="border-gray-400" size="sm" radius="lg">
+                                <Newspaper size={18} color={"#000000"} />
+                                <Text className="text-base font-poppins-semibold ml-1">
+                                    College details
+                                </Text>
+                            </Button>
+                             <Button variant="solid" color="primary"  size="sm" radius="lg" boxShadow="lg" shadowColor="#000000">
+                                <IndianRupee size={18} color={"#fff"} />
+                                <Text className="text-base font-poppins-semibold ml-1 text-white">
+                                    Payments
+                                </Text>
+                            </Button>
+                        </View>
                         <Text className="text-gray-800 font-poppins-semibold text-lg my-2 px-4">
                             Notices
                         </Text>

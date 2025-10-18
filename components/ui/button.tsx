@@ -4,7 +4,6 @@ import React, { ReactNode, memo } from "react";
 import {
     ActivityIndicator,
     GestureResponderEvent,
-    Platform,
     Pressable,
     PressableProps,
     Text,
@@ -167,21 +166,13 @@ export const Button = memo((props: ButtonProps) => {
 
     return (
         <Pressable
-            android_ripple={{
-                color: rippleColor || "rgba(255,255,255,0.3)",
-                borderless: false,
-                radius: 200,
-            }}
             disabled={disabled || loading}
-            style={({ pressed }) => [
-                {
-                    opacity: Platform.OS === "ios" ? (pressed ? 0.8 : 1) : disabled ? 0.6 : 1,
-                },
+            style={[
                 boxShadowStyle,
                 style,
             ]}
             className={cn(
-                "flex-row items-center justify-center border overflow-hidden",
+                "flex-row items-center justify-center border overflow-hidden active:opacity-80 active:scale-95",
                 variantStyle,
                 sizeStyles[size],
                 radiusStyles[radius],
@@ -189,7 +180,7 @@ export const Button = memo((props: ButtonProps) => {
             )}
             onPress={handlePress}
             {...rest}
-            
+
         >
             {loading ? (
                 <ActivityIndicator color={color === "default" ? "#000" : "#fff"} />
