@@ -88,7 +88,7 @@ export default function Profile() {
                 ListHeaderComponent={
                     <>
                         <ProfileHeader />
-                        <View className="w-full h-16 flex-row gap-2 items-center justify-center border-b border-default">
+                        <View className="w-full h-16 flex-row gap-2 items-center justify-center border-b border-double">
                             <Button variant="bordered" className="border-gray-400" color="default" size="sm" radius="lg">
                                 <MessageSquarePlus size={18} color={"#2563eb"} />
                                 <Text className="text-base font-poppins-semibold ml-1 text-blue-600">
@@ -106,6 +106,7 @@ export default function Profile() {
                                 <Text className="text-base font-poppins-semibold ml-1 text-white">
                                     Payments
                                 </Text>
+                                {/* Payments */}
                             </Button>
                         </View>
                         <Text className="text-gray-800 font-poppins-semibold text-lg my-2 px-4">

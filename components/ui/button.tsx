@@ -68,12 +68,24 @@ const baseColors: Record<
     NonNullable<ButtonProps["color"]>,
     { bg: string; border: string; text: string, flatBg?: string }
 > = {
-    primary: { bg: "bg-[#006FEE]", border: "border-[#006FEE]", text: "text-white", flatBg: "bg-[#006FEE]/[0.4]" },
-    secondary: { bg: "bg-[#9353d3]", border: "border-[#9353d3]", text: "text-white", flatBg: "bg-[#9353d3]/[0.4]" },
+    primary: { bg: "bg-[#006FEE]", border: "border-[#006FEE]", text: "text-white", flatBg: "bg-[#99c7fb]" },
+    secondary: { bg: "bg-[#9353d3]", border: "border-[#9353d3]", text: "text-white", flatBg: "bg-[#9353d3]" },
     danger: { bg: "bg-[#f31260]", border: "border-[#f31260]", text: "text-white", flatBg: "bg-[#f31260]/[0.4]" },
     warning: { bg: "bg-[#f5a524]", border: "border-[#f5a524]", text: "text-white", flatBg: "bg-[#f5a524]/[0.4]" },
     success: { bg: "bg-[#17c964]", border: "border-[#17c964]", text: "text-white", flatBg: "bg-[#17c964]/[0.4]" },
     default: { bg: "bg-white", border: "border-gray-300", text: "text-gray-800", flatBg: "bg-white/[0.4]" },
+};
+
+export const baseTextColors: Record<
+    NonNullable<ButtonProps["color"]>,
+    string
+> = {
+    primary: "#006FEE",
+    secondary: "#9353d3",
+    danger: "#f31260",
+    warning: "#f5a524",
+    success: "#17c964",
+    default: "gray-800",
 };
 
 // ---------------- Variants ----------------
@@ -200,7 +212,7 @@ export const Button = memo((props: ButtonProps) => {
                     ) : (
                         children
                     )}
-                    {endIcon ? <View>{endIcon}</View> : null}
+                    {endIcon ? <View></View> : null}
                 </View>
             )}
         </Pressable>

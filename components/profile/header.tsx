@@ -8,6 +8,7 @@ export default function Header() {
         await Linking.openURL("https://www.facebook.com/bapparaj.sk.796");
     };
 
+
     return (
         <View className='border-b border-default'>
             <View className="w-full h-44 flex-row items-center px-3">
@@ -52,7 +53,7 @@ export default function Header() {
                     </Text>
                 </View>
             </View>
-            <View className='h-auto w-full justify-center items-start px-3 pb-2 gap-1 border-default'>
+            <View className='h-auto w-full justify-center items-start px-3 pb-2 gap-1'>
                 <PinDetails
                     icon={<MapPin size={18} />}
                     text="West Bengal/Murshidabad/Patikabari"
@@ -86,3 +87,4 @@ function PinDetails({ text, onClick, icon, className }: { text: string, onClick?
         </Pressable>
     );
 }
+

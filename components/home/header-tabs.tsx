@@ -16,7 +16,7 @@ export default function HeaderTabs() {
                 </Text>
             </Button>
             <Button href='/new-post' radius='lg' variant='flat' boxShadow='lg' color='primary'>
-                <BookMarked color={"#000"} size={18} />
+                <BookMarked size={18} />
             </Button>
         </View>
     );
