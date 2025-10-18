@@ -1,5 +1,5 @@
 import { PostCard } from "@/components/home";
-import { ProfileFriendsCards, ProfileHeader, ProfileSetting } from "@/components/profile";
+import { ProfileHeader, ProfileSetting } from "@/components/profile";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/ui/header";
 import User from "@/components/ui/user";
@@ -89,7 +89,6 @@ export default function Profile() {
                 ListHeaderComponent={
                     <>
                         <ProfileHeader />
-                        <ProfileFriendsCards />
                         <Text className="text-gray-800 font-poppins-semibold text-lg my-2 px-4">
                             Notices
                         </Text>
