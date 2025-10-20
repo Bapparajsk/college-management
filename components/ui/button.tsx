@@ -69,10 +69,10 @@ const baseColors: Record<
     { bg: string; border: string; text: string, flatBg?: string }
 > = {
     primary: { bg: "bg-[#006FEE]", border: "border-[#006FEE]", text: "text-white", flatBg: "bg-[#99c7fb]" },
-    secondary: { bg: "bg-[#9353d3]", border: "border-[#9353d3]", text: "text-white", flatBg: "bg-[#9353d3]" },
-    danger: { bg: "bg-[#f31260]", border: "border-[#f31260]", text: "text-white", flatBg: "bg-[#f31260]/[0.4]" },
-    warning: { bg: "bg-[#f5a524]", border: "border-[#f5a524]", text: "text-white", flatBg: "bg-[#f5a524]/[0.4]" },
-    success: { bg: "bg-[#17c964]", border: "border-[#17c964]", text: "text-white", flatBg: "bg-[#17c964]/[0.4]" },
+    secondary: { bg: "bg-[#9353d3]", border: "border-[#9353d3]", text: "text-white", flatBg: "bg-[#c9a9e9]" },
+    danger: { bg: "bg-[#f31260]", border: "border-[#f31260]", text: "text-white", flatBg: "bg-[#faa0bf]" },
+    warning: { bg: "bg-[#f5a524]", border: "border-[#f5a524]", text: "text-white", flatBg: "bg-[#fbdba7]" },
+    success: { bg: "bg-[#17c964]", border: "border-[#17c964]", text: "text-white", flatBg: "bg-[#a2e9c1]" },
     default: { bg: "bg-white", border: "border-gray-300", text: "text-gray-800", flatBg: "bg-white/[0.4]" },
 };
 
@@ -85,7 +85,7 @@ export const baseTextColors: Record<
     danger: "#f31260",
     warning: "#f5a524",
     success: "#17c964",
-    default: "gray-800",
+    default: "#1f2937",
 };
 
 // ---------------- Variants ----------------
@@ -115,11 +115,12 @@ const getTextColor = (
     color: NonNullable<ButtonProps["color"]>
 ) => {
     const { text } = baseColors[color];
+    const textColor = baseTextColors[color];
 
     switch (variant) {
         case "bordered":
         case "light":
-            return color === "default" ? "text-gray-800" : `text-[${baseColors[color].border.replace("border-", "")}]`;
+            return color === "default" ? "text-gray-800" : `text-[${textColor}]`;
         default:
             return text;
     }
