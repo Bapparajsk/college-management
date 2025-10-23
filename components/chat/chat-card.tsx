@@ -15,8 +15,8 @@ export type ChatCardProps = {
 
 export default function ChatCard({ user, lastMessage, timestamp, unreadCount }: ChatCardProps) {
     return (
-        <Button className='h-20 px-0' radius='lg' variant='light' size='lg' >
-            <View className='w-full h-full flex-row items-center justify-between gap-1'>
+        <Button className='h-20 px-0 active:scale-100' radius='lg' variant='light' size='lg' >
+            <View className='w-full h-full flex-row items-center justify-between gap-1 px-2'>
                 <User
                     avatarUrl={user.profileImageUrl}
                     name={user.name}

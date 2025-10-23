@@ -1,6 +1,6 @@
 import { cn } from "@/utils/cn";
 import { useRouter } from "expo-router";
-import React, { ReactNode, memo } from "react";
+import { ReactNode, memo } from "react";
 import {
     ActivityIndicator,
     GestureResponderEvent,
@@ -193,7 +193,6 @@ export const Button = memo((props: ButtonProps) => {
             )}
             onPress={handlePress}
             {...rest}
-
         >
             {loading ? (
                 <ActivityIndicator color={color === "default" ? "#000" : "#fff"} />

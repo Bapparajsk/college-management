@@ -1,16 +1,17 @@
 import { cn } from '@/utils/cn';
-import { FlashList } from '@shopify/flash-list';
 import { MessageSquareText, MonitorPlay, Search, UserPlus, Video } from 'lucide-react-native';
 import { Fragment, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, useWindowDimensions } from 'react-native';
+import PagerView from 'react-native-pager-view';
 import AbsoluteButton from '../ui/absolute-button';
 import { Button } from '../ui/button';
-import RoomCard from './room-card';
+import ChatWrapper from './chat-wrapper';
+import RoomWrapper from './room-wrapper';
 
 export default function Wrapper() {
 
-    const [isChats, setIsChats] = useState(true);
-    const handleToggle = (type: "chats" | "rooms") => setIsChats(type === "chats");
+    const [page, setPage] = useState(0);
+    const { width } = useWindowDimensions();
 
     return (
         <Fragment>
@@ -21,35 +22,51 @@ export default function Wrapper() {
                 </Button>
             </View>
             <View className='w-full h-10 flex-row border-b border-default justify-start items-center'>
-                <Button onPress={() => handleToggle("chats")} size='sm' variant='light' className='h-8'>
+                <Button onPress={() => setPage(0)} size='sm' variant='light' className='h-8'>
                     <View className='flex-row items-center gap-1'>
-                        <MessageSquareText size={16} strokeWidth={2.3} color={isChats ? "#3b82f6" : "#6b7280"} />
-                        <Text className={cn('text-base font-poppins-semibold', isChats ? "text-blue-500" : "text-gray-500")}>Chats</Text>
+                        <MessageSquareText size={16} strokeWidth={2.3} color={page === 0 ? "#3b82f6" : "#6b7280"} />
+                        <Text className={cn('text-base font-poppins-semibold', page === 0 ? "text-blue-500" : "text-gray-500")}>Chats</Text>
                     </View>
                 </Button>
-                <Button onPress={() => handleToggle("rooms")} size='sm' variant='light' className='h-8'>
+                <Button onPress={() => setPage(1)} size='sm' variant='light' className='h-8'>
                     <View className='flex-row items-center gap-1'>
-                        <MonitorPlay size={16} strokeWidth={2.3} color={isChats ? "#6b7280" : "#3b82f6"} />
-                        <Text className={cn('text-base font-poppins-semibold', isChats ? "text-gray-500" : "text-blue-500")}>Rooms</Text>
+                        <MonitorPlay size={16} strokeWidth={2.3} color={page === 1 ? "#3b82f6" : "#6b7280"} />
+                        <Text className={cn('text-base font-poppins-semibold', page === 1 ? "text-blue-500" : "text-gray-500")}>Rooms</Text>
                     </View>
                 </Button>
             </View>
-            <FlashList
-                contentContainerStyle={{ padding: 12, paddingBottom: 150 }}
-                data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]}
-                renderItem={({ item }) => (
-                    <RoomCard
-                    title="Frontend Engineers Hangout"
-                    description="Quick sync and code review"
-                    participants={12}
-                    avatars={[{ id: 1, initials: 'BR' }, { id: 2, uri: 'https://i.pravatar.cc/150?img=32' }, { id: 3, initials: 'AS' }, { id: 4, initials: 'MK' }]}
-                    isLive={true}
-                    onPress={() => console.log('open room')}
-                    onJoin={() => console.log('join room')}
-                />
-                )}
-            />
-            <AbsoluteButton icon={isChats ? <UserPlus color={"#ffffff"} /> : <Video color={"#ffffff"} />} />
+            <View style={{ flex: 1 }}>
+                <PagerView
+                    style={{ flex: 1 }}
+                    initialPage={0}
+                    onPageSelected={e => setPage(e.nativeEvent.position)}
+                >
+                    <View key="1" style={{ width }}>
+                        <ChatWrapper />
+                    </View>
+
+                    <View key="2" style={{ width }}>
+                        <RoomWrapper />
+                    </View>
+                </PagerView>
+
+                {/* Optional active indicator */}
+                <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 12 }}>
+                    {[0, 1].map(i => (
+                        <View
+                            key={i}
+                            style={{
+                                width: 8,
+                                height: 8,
+                                borderRadius: 4,
+                                marginHorizontal: 4,
+                                backgroundColor: page === i ? '#007bff' : '#ccc',
+                            }}
+                        />
+                    ))}
+                </View>
+            </View>
+            <AbsoluteButton icon={page === 0 ? <UserPlus color={"#ffffff"} /> : <Video color={"#ffffff"} />} />
         </Fragment>
     );
 }
