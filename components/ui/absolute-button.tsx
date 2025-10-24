@@ -38,7 +38,7 @@ export default function AbsoluteButton({ onPress, icon, className, href }: Absol
                 shadowRadius: 9.11,
                 elevation: 14,
             }}
-            className={cn("absolute right-5 z-10 size-16 rounded-3xl bg-[#0D1017] flex items-center justify-center", className)}>
+            className={cn("absolute right-5 z-10 size-16 rounded-3xl bg-[#0D1017] flex items-center justify-center overflow-hidden", className)}>
             <Text >
                 {icon || <Plus color={"#FFFFFF"} />}
             </Text>

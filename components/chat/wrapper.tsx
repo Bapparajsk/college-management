@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn';
-import { MessageSquareText, MonitorPlay, Search, UserPlus, Video } from 'lucide-react-native';
-import { Fragment, useState } from 'react';
+import { MessageSquareText, MonitorPlay, Plus, Search, UserPlus, Video } from 'lucide-react-native';
+import { Fragment, useRef, useState } from 'react';
 import { Text, View, useWindowDimensions } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import AbsoluteButton from '../ui/absolute-button';
@@ -12,6 +12,12 @@ export default function Wrapper() {
 
     const [page, setPage] = useState(0);
     const { width } = useWindowDimensions();
+    const pagerRef = useRef<PagerView>(null);
+
+    const goToPage = (index: number) => {
+        setPage(index);
+        pagerRef.current?.setPage(index);
+    };
 
     return (
         <Fragment>
@@ -22,13 +28,13 @@ export default function Wrapper() {
                 </Button>
             </View>
             <View className='w-full h-10 flex-row border-b border-default justify-start items-center'>
-                <Button onPress={() => setPage(0)} size='sm' variant='light' className='h-8'>
+                <Button onPress={() => goToPage(0)} size='sm' variant='light' className='h-8'>
                     <View className='flex-row items-center gap-1'>
                         <MessageSquareText size={16} strokeWidth={2.3} color={page === 0 ? "#3b82f6" : "#6b7280"} />
                         <Text className={cn('text-base font-poppins-semibold', page === 0 ? "text-blue-500" : "text-gray-500")}>Chats</Text>
                     </View>
                 </Button>
-                <Button onPress={() => setPage(1)} size='sm' variant='light' className='h-8'>
+                <Button onPress={() => goToPage(1)} size='sm' variant='light' className='h-8'>
                     <View className='flex-row items-center gap-1'>
                         <MonitorPlay size={16} strokeWidth={2.3} color={page === 1 ? "#3b82f6" : "#6b7280"} />
                         <Text className={cn('text-base font-poppins-semibold', page === 1 ? "text-blue-500" : "text-gray-500")}>Rooms</Text>
@@ -37,8 +43,11 @@ export default function Wrapper() {
             </View>
             <View style={{ flex: 1 }}>
                 <PagerView
+                    ref={pagerRef}
                     style={{ flex: 1 }}
                     initialPage={0}
+                    pageMargin={0}
+                    scrollEnabled={true}
                     onPageSelected={e => setPage(e.nativeEvent.position)}
                 >
                     <View key="1" style={{ width }}>
@@ -49,24 +58,14 @@ export default function Wrapper() {
                         <RoomWrapper />
                     </View>
                 </PagerView>
-
-                {/* Optional active indicator */}
-                <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 12 }}>
-                    {[0, 1].map(i => (
-                        <View
-                            key={i}
-                            style={{
-                                width: 8,
-                                height: 8,
-                                borderRadius: 4,
-                                marginHorizontal: 4,
-                                backgroundColor: page === i ? '#007bff' : '#ccc',
-                            }}
-                        />
-                    ))}
-                </View>
             </View>
-            <AbsoluteButton icon={page === 0 ? <UserPlus color={"#ffffff"} /> : <Video color={"#ffffff"} />} />
+            <AbsoluteButton icon={page === 0 ? <UserPlus color={"#ffffff"} /> :
+                <View className='size-full absolute flex items-center justify-center'>
+                    <Video color={"#ffffff"} />
+                    <View className='absolute left-[35%]'>
+                        <Plus color={"#ffffff"} strokeWidth={4} size={10} />
+                    </View>
+                </View>} />
         </Fragment>
     );
 }
