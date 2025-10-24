@@ -1,11 +1,11 @@
 {
   "expo": {
     "name": "college-app",
-    "slug": "college-app",
+    "slug": "text-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "collegeapp",
+    "scheme": "textapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
