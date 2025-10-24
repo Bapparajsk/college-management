@@ -22,7 +22,7 @@ export default function Wrapper() {
     return (
         <Fragment>
             <View className="w-full h-16 flex items-center justify-center px-2 pt-2">
-                <Button className='w-full bg-gray-300 justify-start' variant='bordered' size='lg' radius='full' >
+                <Button className='w-full bg-gray-300 justify-start active:scale-1 active:bg-gray-400/70 active:border-gray-400' variant='bordered' size='lg' radius='full' >
                     <Search size={20} color="#555" />
                     <Text className='text-lg font-poppins-medium text-[#555] ml-1'>Search chat, Room...</Text>
                 </Button>
@@ -62,7 +62,7 @@ export default function Wrapper() {
             <AbsoluteButton icon={page === 0 ? <UserPlus color={"#ffffff"} /> :
                 <View className='size-full absolute flex items-center justify-center'>
                     <Video color={"#ffffff"} />
-                    <View className='absolute left-[35%]'>
+                    <View className='absolute left-[20%]'>
                         <Plus color={"#ffffff"} strokeWidth={4} size={10} />
                     </View>
                 </View>} />

@@ -179,7 +179,7 @@ const RoutingCard = ({
                             </View>
 
                         </View>
-                        <Text className="text-base font-poppins text-gray-600">
+                        <Text className="text-base font-inter-medium text-gray-600">
                             {formatHourTo12(time.start)} - {formatHourTo12(time.end)}
                         </Text>
                     </View>
@@ -188,7 +188,7 @@ const RoutingCard = ({
             <View className="px-3 border-t border-dashed border-default h-auto">
                 <View className="py-2">
                     <View className="flex-row justify-between items-center mb-1">
-                        <Text className="text-sm font-poppins-semibold text-gray-700">Class Details:</Text>
+                        <Text className="text-sm font-poppins-semibold text-gray-700">Class Details:-</Text>
                     </View>
 
                     <View className="flex-row flex-wrap justify-between">
