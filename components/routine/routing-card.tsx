@@ -1,7 +1,7 @@
 import { cn } from '@/utils/cn';
 import { decimalTo24h, formatHourTo12 } from '@/utils/format';
 import { default as dayjs } from 'dayjs';
-import { CalendarDays, GraduationCap, NotebookText } from 'lucide-react-native';
+import { GraduationCap, House, NotebookText } from 'lucide-react-native';
 import { memo, useEffect, useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 import Animated, {
@@ -19,7 +19,6 @@ interface CountdownResult {
     mode: CountdownMode;
     diffSec: number;
 }
-
 
 const RoutingCard = ({
     subject,
@@ -147,16 +146,20 @@ const RoutingCard = ({
                     <View className='flex-1'>
                         <View className='w-full flex-row justify-between items-center gap-2'>
                             <View className='flex-row items-center gap-1'>
-                                <Text numberOfLines={1} className='max-w-72'>
-                                    <Text className="text-lg font-poppins-semibold">
+                                <Text numberOfLines={1}>
+                                    <Text className="text-[16px] font-poppins-semibold">
                                         {subject}
                                     </Text>
-                                    <Text className="text-base font-inter-semibold text-gray-700">
+                                    <Text className="font-medium font-inter-medium text-gray-700">
                                         {" "} {teacher?.sortForm && `(${teacher.sortForm})`} {room && `- (${room})`}
                                     </Text>
                                 </Text>
                             </View>
-
+                        </View>
+                        <View className='w-full flex-row justify-between items-center'>
+                            <Text className="text-sm font-inter-medium text-gray-600">
+                                {formatHourTo12(time.start)} - {formatHourTo12(time.end)}
+                            </Text>
                             <View
                                 className={`text-xs font-poppins-semibold px-2 py-0.5 rounded-full border 
                                     ${status === "Upcoming"
@@ -177,43 +180,39 @@ const RoutingCard = ({
                                     </Text>
                                 )}
                             </View>
-
                         </View>
-                        <Text className="text-base font-inter-medium text-gray-600">
-                            {formatHourTo12(time.start)} - {formatHourTo12(time.end)}
-                        </Text>
                     </View>
                 </View>
             </View>
             <View className="px-3 border-t border-dashed border-default h-auto">
                 <View className="py-2">
                     <View className="flex-row justify-between items-center mb-1">
-                        <Text className="text-sm font-poppins-semibold text-gray-700">Class Details:-</Text>
+                        <Text className="text-sm font-poppins-semibold text-gray-700">Class Details:</Text>
                     </View>
 
                     <View className="flex-row flex-wrap justify-between">
                         {/* Room */}
                         <View className="flex-row items-center w-[48%] mb-1">
-                            <CalendarDays size={14} color="#6B7280" />
-                            <Text className="ml-1 text-xs font-poppins text-gray-600">Room {room || <Text className="text-gray-400">N/A</Text>}</Text>
+                            <House size={14} color="#6B7280" />
+                            <Text className="ml-1 text-xs font-poppins-medium text-gray-600">Room {room || <Text className="text-gray-400">N/A</Text>}</Text>
                         </View>
 
                         {/* Teacher */}
                         <View className="flex-row items-center w-[48%] mb-1">
                             <GraduationCap size={14} color="#007AFF" />
-                            <Text className="ml-1 text-xs font-poppins text-gray-600">{teacher?.fullName || <Text className="text-gray-400">N/A</Text>}</Text>
+                            <Text className="ml-1 text-xs font-poppins-medium text-gray-600">{teacher?.fullName || <Text className="text-gray-400">N/A</Text>}</Text>
                         </View>
 
                         {/* Class Type */}
                         <View className="flex-row items-center w-[48%] mb-1">
                             <ClassTypeIcon size={14} color={color} />
-                            <Text className="ml-1 text-xs font-poppins text-gray-600">{classType}</Text>
+                            <Text className="ml-1 text-xs font-poppins-medium text-gray-600">{classType}</Text>
                         </View>
 
                         {/* Topics */}
                         <View className="flex-row items-center w-[48%] mb-1">
                             <NotebookText size={14} color="#6B7280" />
-                            <Text className="ml-1 text-xs font-poppins text-gray-600">{topics || <Text className="text-gray-400">No topics assigned</Text>}</Text>
+                            <Text className="ml-1 text-xs font-poppins-medium text-gray-600">{topics || <Text className="text-gray-400">No topics assigned</Text>}</Text>
                         </View>
                     </View>
                 </View>

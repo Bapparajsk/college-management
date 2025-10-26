@@ -111,10 +111,11 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
     ],
     "Wednesday": [
         {
-            subject: "Applied Phy-1/Chem (B-1/2)",
+            subject: "Applied Chemistry",
             classType: "Lab",
+            room: "Lab B-1/2",
             time: { start: 10.5, end: 12.5 },
-            teacher: { sortForm: "S.P/R.D", fullName: "Sujit Pathak / Rajdeep Das" },
+            teacher: { sortForm: "S.P/R.D", fullName: "Rajdeep Das" },
             icon: Atom,
             classTypeIcon: Beaker,
             color: "#00D866",
@@ -223,11 +224,11 @@ export const routingDetails: Record<Day, RoutingDetails[]> = {
             color: "#4F46E5",
         },
         {
-            subject: "Applied Phy-1/Chem (B-2/1)",
+            subject: "Applied Physics - 1",
             classType: "Lab",
             time: { start: 14, end: 16 },
-            room: "-",
-            teacher: { sortForm: "S.P/R.D", fullName: "Sujit Pathak / Rajdeep Das" },
+            room: "Lab B-1/2",
+            teacher: { sortForm: "S.P/R.D", fullName: "Sujit Pathak" },
             icon: Atom,
             classTypeIcon: BookOpen,
             color: "#00D866",

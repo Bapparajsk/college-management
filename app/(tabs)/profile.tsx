@@ -50,7 +50,6 @@ export default function Profile() {
                     </View>
                 }
             />
-
             <Animated.View
                 style={[
                     {
