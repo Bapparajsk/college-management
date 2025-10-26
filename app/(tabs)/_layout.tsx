@@ -86,7 +86,7 @@ export default function TabsLayout() {
                                     />
                                     <Text
                                         style={{ color: isActiveRoute(tab.name) ? "#000" : "#8e8e93" }}
-                                        className="capitalize text-sm font-poppins-semibold">
+                                        className="capitalize text-[12px] font-poppins-semibold">
                                         {tab.title}
                                     </Text>
                                 </Pressable>

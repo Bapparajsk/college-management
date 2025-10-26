@@ -1,6 +1,7 @@
 import { cn } from '@/utils/cn';
 import { Facebook, Github, Link, MapPin } from 'lucide-react-native';
-import { Image, Linking, Pressable, Text, View } from 'react-native';
+import { Linking, Pressable, Text, View } from 'react-native';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
 export default function Header() {
 
@@ -25,12 +26,12 @@ export default function Header() {
 
                     elevation: 14,
                 }} className="size-32 mr-3 border-[3px] rounded-full overflow-hidden items-center justify-center">
-                    <Image
-                        source={{
-                            uri: "https://img.freepik.com/premium-photo/portrait-successful-programmer-game-developer-coder-guy-uses-computer-laptop-work-game-design-hacker-boy-generative-ai-gamer-headphones_117038-5485.jpg",
-                        }}
-                        className="size-[7.5rem] rounded-full object-cover border border-default"
-                    />
+                    <Avatar className='size-[7.5rem]' alt="Zach Nugent's Avatar">
+                        <AvatarImage  source={{ uri: "https://img.freepik.com/premium-photo/portrait-successful-programmer-game-developer-coder-guy-uses-computer-laptop-work-game-design-hacker-boy-generative-ai-gamer-headphones_117038-5485.jpg" }} />
+                        <AvatarFallback>
+                            <Text>ZN</Text>
+                        </AvatarFallback>
+                    </Avatar>
                 </View>
 
                 {/* Right - Info */}

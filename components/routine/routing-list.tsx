@@ -8,7 +8,7 @@ import { getTodaysRoutine, RoutingDetails } from './routing-details';
 
 export default function RoutingList() {
     const [refreshing, setRefreshing] = useState(false);
-    const [routineData, setRoutineData] = useState<RoutingDetails[]>(() => getTodaysRoutine());
+    const [routineData, setRoutineData] = useState<RoutingDetails[]>(() => getTodaysRoutine("Monday"));
 
     const handleRefresh = useCallback(() => {
         setRefreshing(true);
@@ -16,7 +16,7 @@ export default function RoutingList() {
         // Simulate reloading / API call
         setTimeout(() => {
             // This will force a re-fetch of the routine data
-            const refreshedData = getTodaysRoutine();
+            const refreshedData = getTodaysRoutine("Monday");
             setRoutineData(refreshedData);
             setRefreshing(false);
         }, 1500);
@@ -59,7 +59,7 @@ export default function RoutingList() {
             { bar: "Completed", show: completed.length > 0 },
             ...completed,
         ];
-    }, [routineData, refreshing]); // Add routineData as dependency
+    }, [routineData]); // Add routineData as dependency
 
     return (
         <FlashList

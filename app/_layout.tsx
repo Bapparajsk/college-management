@@ -1,23 +1,29 @@
 import FontProvider from "@/providers/font";
+import { PortalHost } from '@rn-primitives/portal';
 import { Stack } from "expo-router";
 import { StatusBar } from "react-native";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from "react-native-safe-area-context";
+
 import "./global.css";
 
 export default function RootLayout() {
   return (
-    <SafeAreaProvider>
-      <StatusBar
-        animated={true}
-        backgroundColor="#F1F1F1"
-        barStyle="dark-content"
-      />
-      <FontProvider>
-        <Stack
-
-          screenOptions={{ headerShown: false }}
+    <GestureHandlerRootView style={{ flex: 1, zIndex: 9999 }}>
+      <SafeAreaProvider>
+        <StatusBar
+          animated={true}
+          backgroundColor="#F1F1F1"
+          barStyle="dark-content"
         />
-      </FontProvider>
-    </SafeAreaProvider>
+        <PortalHost/>
+        <FontProvider>
+          <Stack
+
+            screenOptions={{ headerShown: false }}
+          />
+        </FontProvider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }

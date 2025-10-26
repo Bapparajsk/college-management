@@ -2,12 +2,12 @@ import { cn } from "@/utils/cn";
 import { useRouter } from "expo-router";
 import { ReactNode, memo } from "react";
 import {
-    ActivityIndicator,
-    GestureResponderEvent,
-    Pressable,
-    PressableProps,
-    Text,
-    View
+  ActivityIndicator,
+  GestureResponderEvent,
+  Pressable,
+  PressableProps,
+  Text,
+  View
 } from "react-native";
 
 export type ButtonProps = PressableProps & {
