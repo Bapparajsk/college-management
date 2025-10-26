@@ -41,7 +41,7 @@ export default function AbsoluteButton({ onPress, icon, className, href, ...prop
             }}
             variant='flat'
             radius='lg'
-            className={cn("absolute right-5 z-10 size-16 bg-[#0D1017]", className)}
+            className={cn("absolute right-5 z-10 size-14 bg-[#0D1017]", className)}
             {...props}
         >
             <Text >

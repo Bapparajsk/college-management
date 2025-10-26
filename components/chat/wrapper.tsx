@@ -24,7 +24,7 @@ export default function Wrapper() {
             <View className="w-full h-16 flex items-center justify-center px-2 pt-2">
                 <Button className='w-full bg-gray-300 justify-start active:scale-1 active:bg-gray-400/70 active:border-gray-400' variant='bordered' size='lg' radius='full' >
                     <Search size={20} color="#555" />
-                    <Text className='text-lg font-poppins-medium text-[#555] ml-1'>Search chat, Room...</Text>
+                    <Text className='text-[16px] font-poppins-medium text-[#555] ml-1'>Search chat, Room...</Text>
                 </Button>
             </View>
             <View className='w-full h-10 flex-row border-b border-default justify-start items-center'>

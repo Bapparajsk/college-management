@@ -21,16 +21,18 @@ export default function ChatCard({ user, lastMessage, timestamp, unreadCount }: 
                     avatarUrl={user.profileImageUrl}
                     name={user.name}
                     department={lastMessage}
-                    titleClassName='text-gray-500 max-w-80'
+                    titleClassName='text-gray-500'
                 />
-                <View className='gap-1'>
-                    <Text className='text-sm font-poppins-medium text-right text-green-600'>
+                <View>
+                    <Text className='text-[12px] font-poppins-medium text-right text-green-600'>
                         {timestamp}
                     </Text>
                     <View className='w-full items-center'>
-                        <Text className='w-fit bg-green-600 text-white font-poppins-medium text-xs px-2 py-1 rounded-full text-center'>
-                            {unreadCount}
-                        </Text>
+                        <View className='size-5 bg-green-500 rounded-full justify-center items-center'>
+                            <Text className='text-white font-poppins-medium text-[12px] mt-0.5'>
+                                {unreadCount}
+                            </Text>
+                        </View>
                     </View>
                 </View>
             </View>
