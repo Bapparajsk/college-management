@@ -40,29 +40,29 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
 
     return (
         <View className={cn('flex-1 bg-white')}>
-            <View className={cn('flex-row border-b border-gray-200')}>
+            <View className={cn('flex-row border-b justify-center border-gray-200')}>
                 {weekDays.map(day => (
                     <View key={day} className={cn('flex-1 py-3')}>
-                        <Text className={cn('text-center text-sm font-medium text-gray-600')}>
+                        <Text className={cn('text-center text-[12px] font-poppins-medium text-gray-600')}>
                             {day}
                         </Text>
                     </View>
                 ))}
             </View>
-
-            <View className={cn('flex-row flex-wrap')}>
+            <View className={cn('flex-row flex-wrap w-full')}>
                 {days.map((day, index) => (
                     <TouchableOpacity
                         key={index}
-                        className={cn(`w-1/7 p-2 border-b border-r border-gray-100 ${day.isCurrentMonth ? 'bg-white' : 'bg-gray-50'
+                        className={cn(`w-[14.20%] p-2 border-b border-gray-100 ${day.isCurrentMonth ? 'bg-white' : 'bg-gray-50'
                             } ${day.isSelected ? 'bg-primary-50' : ''}`)}
                         onPress={() => onSelectDate(day.date)}
                     >
-                        <View className={cn(`items-center justify-center w-8 h-8 rounded-full ${day.isToday ? 'bg-primary-500' : ''
-                            } ${day.isSelected && !day.isToday ? 'bg-primary-100' : ''}`)}>
-                            <Text className={cn(`text-sm font-medium ${day.isToday ? 'text-white' :
-                                    day.isCurrentMonth ? 'text-gray-900' : 'text-gray-400'
-                                }`)}>
+                        <View className={cn(`items-center justify-center w-8 h-8 rounded-full ${day.isToday ? 'text-blue-500' : ''
+                            } ${day.isSelected && !day.isToday ? 'text-blue-500' : ''}`)}>
+                            <Text className={cn(`text-balance text-[12px] font-poppins-medium `,
+                                day.isToday ? 'text-[#006FEE]' : day.isCurrentMonth ? 'text-gray-900' : 'text-gray-400',
+                                day.isSelected && !day.isToday ? 'text-[#006FEE]' : ''
+                            )}>
                                 {day.date.getDate()}
                             </Text>
                         </View>

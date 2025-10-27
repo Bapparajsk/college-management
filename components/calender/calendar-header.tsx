@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn';
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { Button } from '../ui/button';
 import { ViewMode } from './type';
 
@@ -34,36 +34,44 @@ const CalendarHeader: React.FC<CalendarHeaderProps> = ({
     return (
         <View className={cn('bg-white px-4 py-3 border-b border-gray-200')}>
             <View className={cn('flex-row items-center justify-between mb-3')}>
-                <Text className={cn('text-2xl font-bold text-gray-900')}>
+                <Text className={cn('text-2xl font-poppins-semibold text-gray-900')}>
                     {formatHeaderDate()}
                 </Text>
 
-                <View className={cn('flex-row space-x-2')}>
-                    <TouchableOpacity
-                        className={cn('px-3 py-1 rounded-lg bg-gray-100')}
+                <View className={cn('flex-row gap-1')}>
+                    <Button
                         onPress={() => onNavigate('prev')}
+                        size='sm'
+                        className='h-8 active:opacity-70'
+                        variant='flat'
+                        radius='md'
                     >
-                        <Text className={cn('text-gray-700 font-medium')}>Prev</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        className={cn('px-3 py-1 rounded-lg bg-gray-100')}
+                        <Text className={'text-gray-700 text-balance font-poppins-medium'}>Prev</Text>
+                    </Button>
+                    <Button
                         onPress={() => onNavigate('next')}
+                        size='sm'
+                        className='h-8 active:opacity-70'
+                        variant='flat'
+                        radius='md'
                     >
-                        <Text className={cn('text-gray-700 font-medium')}>Next</Text>
-                    </TouchableOpacity>
+                        <Text className={'text-gray-700 text-balance font-poppins-medium'}>Next</Text>
+                    </Button>
                 </View>
             </View>
 
-            <View className={cn('flex-row bg-gray-100 rounded-lg p-1')}>
+            <View className={cn('flex-row gap-2 rounded-lg p-1 border border-default')}>
                 {(['month', 'week', 'day'] as ViewMode[]).map((mode) => (
                     <Button
                         key={mode}
                         className={cn(`flex-1 py-2 rounded-md ${viewMode === mode ? 'bg-white shadow-sm' : ''
                             }`)}
                         onPress={() => onViewModeChange(mode)}
+                        variant='flat'
+                        size='sm'
                     >
                         <Text
-                            className={cn(`text-center font-medium ${viewMode === mode ? 'text-primary-600' : 'text-gray-600'
+                            className={cn(`text-center font-poppins-medium ${viewMode === mode ? 'text-primary-600' : 'text-gray-600'
                                 }`)}
                         >
                             {mode.charAt(0).toUpperCase() + mode.slice(1)}
