@@ -1,7 +1,7 @@
 import { cn } from '@/utils/cn';
 import React from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import { CalendarDay } from './type';
+import { CalendarDay } from '../../types/calender';
 
 interface CalendarGridProps {
     days: CalendarDay[];
@@ -39,7 +39,7 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
     }
 
     return (
-        <View className={cn('flex-1 bg-white')}>
+        <View className={cn('flex-1 bg-white h-auto')}>
             <View className={cn('flex-row border-b justify-center border-gray-200')}>
                 {weekDays.map(day => (
                     <View key={day} className={cn('flex-1 py-3')}>
@@ -49,12 +49,15 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
                     </View>
                 ))}
             </View>
-            <View className={cn('flex-row flex-wrap w-full')}>
+            <View className={cn('flex-row flex-wrap w-full h-fit')}>
                 {days.map((day, index) => (
                     <TouchableOpacity
                         key={index}
-                        className={cn(`w-[14.20%] p-2 border-b border-gray-100 ${day.isCurrentMonth ? 'bg-white' : 'bg-gray-50'
-                            } ${day.isSelected ? 'bg-primary-50' : ''}`)}
+                        className={cn(`w-[14.20%] p-2 border-b  border-gray-100`,
+                            day.isSelected ? 'bg-primary-50' : '',
+                            day.isCurrentMonth ? 'bg-white' : 'bg-gray-50',
+                            index % 7 !== 0 ? 'border-l' : ''
+                        )}
                         onPress={() => onSelectDate(day.date)}
                     >
                         <View className={cn(`items-center justify-center w-8 h-8 rounded-full ${day.isToday ? 'text-blue-500' : ''

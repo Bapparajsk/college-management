@@ -8,7 +8,7 @@ import { getTodaysRoutine, RoutingDetails } from './routing-details';
 
 export default function RoutingList() {
     const [refreshing, setRefreshing] = useState(false);
-    const [routineData, setRoutineData] = useState<RoutingDetails[]>(() => getTodaysRoutine("Friday"));
+    const [routineData, setRoutineData] = useState<RoutingDetails[]>(() => getTodaysRoutine());
 
     const handleRefresh = useCallback(() => {
         setRefreshing(true);
@@ -16,7 +16,7 @@ export default function RoutingList() {
         // Simulate reloading / API call
         setTimeout(() => {
             // This will force a re-fetch of the routine data
-            const refreshedData = getTodaysRoutine("Friday");
+            const refreshedData = getTodaysRoutine();
             setRoutineData(refreshedData);
             setRefreshing(false);
         }, 1500);

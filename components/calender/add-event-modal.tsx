@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
     View,
 } from 'react-native';
-import { CalendarEvent } from './type';
+import { CalendarEvent } from '../../types/calender';
 
 interface AddEventModalProps {
     visible: boolean;

@@ -1,8 +1,8 @@
 import { cn } from '@/utils/cn';
 import React from 'react';
 import { Text, View } from 'react-native';
+import { ViewMode } from '../../types/calender';
 import { Button } from '../ui/button';
-import { ViewMode } from './type';
 
 interface CalendarHeaderProps {
     currentDate: Date;

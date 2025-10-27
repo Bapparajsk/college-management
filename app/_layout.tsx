@@ -5,6 +5,7 @@ import { StatusBar } from "react-native";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
+import { BottomSheetProvider } from "@/context/bottom-sheet-context";
 import "./global.css";
 
 export default function RootLayout() {
@@ -16,12 +17,13 @@ export default function RootLayout() {
           backgroundColor="#F1F1F1"
           barStyle="dark-content"
         />
-        <PortalHost/>
+        <PortalHost />
         <FontProvider>
-          <Stack
-
-            screenOptions={{ headerShown: false }}
-          />
+          <BottomSheetProvider>
+            <Stack
+              screenOptions={{ headerShown: false }}
+            />
+          </BottomSheetProvider>
         </FontProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>

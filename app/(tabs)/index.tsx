@@ -6,11 +6,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
 
+
     return (
         <SafeAreaView style={{ flex: 1 }} >
             <Header icon={<School size={24} />} title="EIEM" />
-            <AbsoluteButton icon={<MessageSquarePlus color={"#ffffff"} />} href="/new-post" />
-            <PostList/>
+            <AbsoluteButton icon={<MessageSquarePlus color={"#ffffff"} />}/>
+            <PostList />
         </SafeAreaView>
     );
 }

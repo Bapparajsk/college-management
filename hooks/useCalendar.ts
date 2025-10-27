@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import { CalendarDay, CalendarEvent, ViewMode } from '../components/calender/type';
+import { CalendarDay, CalendarEvent, ViewMode } from '../types/calender';
 
 export const useCalendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
